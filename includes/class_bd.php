@@ -2,8 +2,8 @@
 class Database  
 {
     public $host = 'localhost';
-    public $user = 'root_libreriaBIT';
-    public $pass = 'Blo2SonNT@2508';
+    public $user = 'root';
+    public $pass = '';
     public $db = 'Libreria_BIT';
     private $conn;
 
