@@ -14,6 +14,7 @@
 
 <body>
     <nav>
+        <?php include("./secciones/navbar.php"); ?>
     </nav>
     <main>
 
@@ -25,7 +26,7 @@
 
     </form>
     <footer>
-
+        <?php include("./secciones/footer.php"); ?>
     </footer>
 </body>
 
