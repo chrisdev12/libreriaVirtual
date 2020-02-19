@@ -29,7 +29,7 @@ class Libro
         $aa = "";
 
         if (!isset($nom_libro) && empty($nom_libro)) {
-            $aa = "llenar todos los campos";
+            $aa = "llenar todos los campos ....";
             return $aa;
         } else {
             $sql = "INSERT INTO tb_libros (id_autor, nom_libro, valor, fec_publicacion, id_categoria, id_usuario_cre, descripcion) 
