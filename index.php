@@ -1,9 +1,4 @@
-<?php
-include('includes/class/class_bd.php');
-$database = new Database();
-$prueba = $database->conectar();
-?>
-
+    
 <html lang="es">
 
 <head>
@@ -14,7 +9,7 @@ $prueba = $database->conectar();
 </head>
 
 <body>
-    <nav>
+    <!-- <nav>
     </nav>
     <main>
 
@@ -27,7 +22,12 @@ $prueba = $database->conectar();
     </form>
     <footer>
 
-    </footer>
+    </footer> -->
+
+    <section>
+        <?php include('./libros/libro_form.php')
+        ?>
+    </section>
 
     <script src="js/bootstrap/bootstrap.min.js"></script>
     <script src="js/bootstrap/popper.min.js"></script>

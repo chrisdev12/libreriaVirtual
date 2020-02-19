@@ -2,13 +2,13 @@
 include('class_bd.php');
 class Libro  
 {
-    public $idAutor;
-    public $nomLibro;
+    public $id_autor;
+    public $nom_libro;
     public $valor;
     public $descripcion;
     public $fecha_publicacion;
-    public $idCategoria;
-    public $idUsuario;
+    public $id_categoria;
+    public $id_usuario;
     public $conn;
 
     function __construct()
@@ -18,16 +18,22 @@ class Libro
     }
 
     function guardarLibro($data){
-        $idAutor = $data['idAutor'];
-        $nomLibro = $data['nomLibro'];
+        $id_autor = $data['id_autor'];
+        $nom_libro = $data['nom_libro'];
         $valor = $data['valor'];
         $fecha_publicacion = $data['fecha_publicacion'];
-        $idCategoria = $data['idCategoria'];
-        $idUsuario = $data['idUsuario'];
+        $id_categoria = $data['id_categoria'];
+        $id_usuario = $data['id_usuario'];
         $descripcion = $data['descripcion'];
+        $aa = "";
+
+        if(!isset($id_autor) && empty($id_autor)){
+            $aa = "llenar todos los campos";
+            return $aa;
+        }
 
         $sql = "INSERT INTO tb_libros (id_autor, nom_libro, valor, fec_publicacion, id_categoria, id_usuario_cre, descripcion) 
-                VALUES($idAutor, '$nomLibro', $valor, '$fecha_publicacion', $idCategoria, $idUsuario,'$descripcion')";
+                VALUES($id_autor, '$nom_libro', $valor, '$fecha_publicacion', $id_categoria, $id_usuario,'$descripcion')";
         return mysqli_query($this->conn, $sql);
         
     }
