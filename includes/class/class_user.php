@@ -35,6 +35,8 @@ class user extends Database {
         }
     }
 
+    // holi
+
     public function setUser($user) {
         $query = $this->connect_user_session()->prepare('SELECT * FROM tb_usuario WHERE correo = :user');
         $query->execute(['user' => $user]);
