@@ -1,7 +1,8 @@
 <?php
-include('includes/class/class_bd.php');
-$database = new Database();
-$prueba = $database->conectar();
+include('includes/class/Libro.php');
+$libro = new Libro();
+$listaLibros = $libro->getLibros();
+$itr = 0;
 ?>
 
 <html lang="es">
@@ -17,7 +18,67 @@ $prueba = $database->conectar();
     <nav>
     </nav>
     <main>
-
+        <div class="container">
+            <?php
+            while(($datosLibros = mysqli_fetch_object($listaLibros)) && ($itr < 3)){
+                $img = $libro->getLibroImg($datosLibros->id_libro);
+                
+                // while( $imgJ = mysq($img) ){
+                //     var_dump($imgJ->ruta);
+                    
+                // }
+                var_dump($img[0]);
+                
+                echo "<div class='row'>
+                        <div class='col-sm'>
+                            <div class='card main-books' style='width: 18rem;'>
+                                <img src='$img[0]' class='card-img-top' alt='...'>
+                                <div class='card-body'>
+                                    <h5 class='card-title'>$datosLibros->nom_libro</h5>
+                                    <p class='card-text'>$datosLibros->descripcion</p>
+                                    <a href='#' class='btn btn-primary'>Ver más</a>
+                                </div>
+                            </div>
+                        </div>";
+                    $itr++;
+            }
+        ?>
+            <!-- <div class="row">
+                <div class="col-sm">
+                    <div class="card main-books" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="card main-books" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="card main-books" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
     </main>
     <section>
 
