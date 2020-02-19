@@ -62,17 +62,18 @@ class Libro
 
     function update($data)
     {
-        $idAutor = $data['idAutor'];
-        $nomLibro = $data['nomLibro'];
+
+        $id_autor = $data['id_autor'];
+        $nom_libro = $data['nom_libro'];
         $valor = $data['valor'];
         $fecha_publicacion = $data['fecha_publicacion'];
-        $idCategoria = $data['idCategoria'];
-        $idUsuario = $data['idUsuario'];
+        $id_categoria = $data['id_categoria'];
+        $id_usuario = $data['id_usuario'];
         $descripcion = $data['descripcion'];
-        $idLibro = $data['idLibro'];
+        $id_libro = $data['idLibro'];
 
-        $sql = "UPDATE tb_libros SET nom_libro = '$nomLibro', valor = '$valor', fec_publicacion = '$fecha_publicacion', id_categoria = '$idCategoria', descripcion = '$descripcion'
-                WHERE id_libro = $idLibro";
+        $sql = "UPDATE tb_libros SET nom_libro = '$nom_libro', valor = '$valor', fec_publicacion = '$fecha_publicacion', id_categoria = '$id_categoria', descripcion = '$descripcion'
+                WHERE id_libro = $id_libro";
         return mysqli_query($this->conn, $sql);
     }
     function getCategoria()
@@ -81,6 +82,6 @@ class Libro
         return mysqli_query($this->conn,$sql);
     }
     function getLibroByCategoria($categoria){
-        $sql = "SELECT * from tb_libros where id_categoria = $categoria"
+        $sql = "SELECT * from tb_libros where id_categoria = $categoria";
     }
 }

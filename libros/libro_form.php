@@ -1,12 +1,14 @@
 <?php
 include('includes/class/Libro.php');
 $libro = new Libro();
+$libro_categoria = $libro->getCategoria();
 
 if (isset($_POST) && !empty($_POST)) {
     $libro->guardarLibro($_POST);
 } else {
     echo 'aun no se ha creado form';
 }
+
 
 
 ?>
@@ -46,16 +48,16 @@ if (isset($_POST) && !empty($_POST)) {
                 <div class="form-group">
                     <label>Categoria:</label>
                     <select class="form-control" id="idCategoria" name="id_categoria">
-                        <option value="1">Infantil</option>
+                    <?php
+                    while($value  = mysqli_fetch_object($libro_categoria)){
+                        var_dump( $value->id_categoria);
+                        echo "<option value='$value->id_categoria'>$value->nom_categoria</option>";
+                    }
+                    ?>
                     </select>
                 </div>
                 <input type="hidden" id="id_usuario" name="id_usuario" value="1">
                 <button class="btn btn-success">CREAR</button>
-                <?php
-                    if(isset($aa)){
-                        echo $aa;
-                    }
-                ?>
             </form>
         </div>
     </div>
