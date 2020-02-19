@@ -30,7 +30,7 @@ $arr = array("key1" => "value1", "key2" => "value2");
     <!-- FOOTER -->
 
     <script type="text/javascript">
-        let something = '<?php echo $arr; ?>'
+        let something = '<?php ?>'
         console.log(something)
     </script>
     <script src="js/categorias.js"></script>
