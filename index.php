@@ -13,16 +13,15 @@ $itr = 0;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/normalize.css">
     <title>Libreria Virtual</title>
 </head>
 
 <body>
-    <header class="container-fluid">
+   
         <?php
-        include './secciones/navbar.php';
+        include 'secciones/navbar.php';
         ?>
-    </header>
+   
     <div id="wowslider-container1">
         <div class="ws_images">
             <ul>
@@ -73,9 +72,10 @@ $itr = 0;
     include './secciones/footer.php';
     ?>
 
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/bootstrap/bootstrap.min.js"></script>
     <script src="js/bootstrap/popper.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="img/slider/devSlider/engine1/wowslider.js"></script>
     <script type="text/javascript" src="img/slider/devSlider/engine1/script.js"></script>
 </body>
