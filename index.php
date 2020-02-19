@@ -1,5 +1,5 @@
 <?php
-include('includes/class_bd.php');
+include('includes/class/class_bd.php');
 $database = new Database();
 $prueba = $database->conectar();
 ?>
