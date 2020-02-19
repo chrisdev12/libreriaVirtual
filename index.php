@@ -1,3 +1,10 @@
+<?php
+include('includes/class/Libro.php');
+$libro = new Libro();
+$listaLibros = $libro->getLibros();
+$itr = 0;
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
