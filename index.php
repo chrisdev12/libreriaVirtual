@@ -37,6 +37,30 @@
         </div>
         <div class="ws_shadow"></div>
     </div>
+
+    <br>
+    <br>
+
+    <div class="container">
+            <?php
+            while(($datosLibros = mysqli_fetch_object($listaLibros)) && ($itr < 3)){
+                $img = $libro->getLibroImg($datosLibros->id_libro);
+                echo "<div class='row'>
+                        <div class='col-sm'>
+                            <div class='card main-books' style='width: 18rem;'>
+                                <img src='$img[0]' class='card-img-top' alt='...'>
+                                <div class='card-body'>
+                                    <h5 class='card-title'>$datosLibros->nom_libro</h5>
+                                    <p class='card-text'>$datosLibros->descripcion</p>
+                                    <a href='#' class='btn btn-primary'>Ver más</a>
+                                </div>
+                            </div>
+                        </div>";
+                    $itr++;
+            }
+        ?>
+        </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/bootstrap/bootstrap.min.js"></script>
     <script type="text/javascript" src="img/slider/devSlider/engine1/wowslider.js"></script>
