@@ -18,8 +18,11 @@ $itr = 0;
 </head>
 
 <body>
-    <nav>
-    </nav>
+    <header class="container-fluid">
+        <?php
+        include './secciones/navbar.php';
+        ?>
+    </header>
     <div id="wowslider-container1">
         <div class="ws_images">
             <ul>
@@ -44,7 +47,6 @@ $itr = 0;
             <?php
             while(($datosLibros = mysqli_fetch_object($listaLibros)) && ($itr < 3)){
                 $img = $libro->getLibroImg($datosLibros->id_libro);
-                var_dump($img[0]);
                 echo "<div class='row'>
                         <div class='col-sm'>
                             <div class='card main-books' style='width: 18rem;'>
@@ -67,9 +69,9 @@ $itr = 0;
     <form method="POST">
 
     </form>
-    <footer>
-
-    </footer>
+    <?php
+    include './secciones/footer.php';
+    ?>
 
     <script src="js/bootstrap/bootstrap.min.js"></script>
     <script src="js/bootstrap/popper.min.js"></script>
@@ -77,14 +79,5 @@ $itr = 0;
     <script type="text/javascript" src="img/slider/devSlider/engine1/wowslider.js"></script>
     <script type="text/javascript" src="img/slider/devSlider/engine1/script.js"></script>
 </body>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Document</title>
-    <link rel="icon" type="image/png" href="<?php echo $icon_tittle; ?>" />
-    <link rel="import" href="styles/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="img/slider/devSlider/engine1/style.css" />
-</head>
 
 </html>
