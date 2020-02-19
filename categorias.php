@@ -16,6 +16,9 @@ $arr = array("key1" => "value1", "key2" => "value2");
 
 <body>
     <!-- HEADER -->
+    <nav>
+        <?php include('secciones/navbar.php'); ?>
+    </nav>
 
     <div class="principal">
         <div id="side">
@@ -37,6 +40,9 @@ $arr = array("key1" => "value1", "key2" => "value2");
 
 
     <!-- FOOTER -->
+    <footer>
+        <?php include('secciones/footer.php'); ?>
+    </footer>
     <script src="js/bootstrap/bootstrap.min.js"></script>
     <script src="js/bootstrap/popper.min.js"></script>
 </body>
