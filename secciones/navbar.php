@@ -8,7 +8,7 @@
     <span></span>
 </label>
 <ul class="items-nav">
-    <li><a href="">Home/a></li>
+    <li><a href="">Home</a></li>
     <li><a href="">Categorias</a></li>
     <li><a href="">Login</a></li>
 </ul>
