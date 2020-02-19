@@ -1,6 +1,6 @@
 <?php
 include('class_bd.php');
-class Libro  
+class Libro
 {
     public $id_autor;
     public $nom_libro;
@@ -17,7 +17,8 @@ class Libro
         $this->conn = $db->conectar();
     }
 
-    function guardarLibro($data){
+    function guardarLibro($data)
+    {
         $id_autor = $data['id_autor'];
         $nom_libro = $data['nom_libro'];
         $valor = $data['valor'];
@@ -27,28 +28,30 @@ class Libro
         $descripcion = $data['descripcion'];
         $aa = "";
 
-        if(!isset($id_autor) && empty($id_autor)){
+        if (!isset($nom_libro) && empty($nom_libro)) {
             $aa = "llenar todos los campos";
             return $aa;
-        }
-
-        $sql = "INSERT INTO tb_libros (id_autor, nom_libro, valor, fec_publicacion, id_categoria, id_usuario_cre, descripcion) 
+        } else {
+            $sql = "INSERT INTO tb_libros (id_autor, nom_libro, valor, fec_publicacion, id_categoria, id_usuario_cre, descripcion) 
                 VALUES($id_autor, '$nom_libro', $valor, '$fecha_publicacion', $id_categoria, $id_usuario,'$descripcion')";
-        return mysqli_query($this->conn, $sql);
-        
+            return mysqli_query($this->conn, $sql);
+        }
     }
 
-    function getLibros(){
+    function getLibros()
+    {
         $sql = "SELECT * FROM tb_libros";
-        return mysqli_query($this->conn,$sql);
+        return mysqli_query($this->conn, $sql);
     }
 
-    function delete($id){
+    function delete($id)
+    {
         $sql = "DELETE FROM tb_libros where id_libro = $id";
         return mysqli_query($this->conn, $sql);
     }
 
-    function update($data){
+    function update($data)
+    {
         $idAutor = $data['idAutor'];
         $nomLibro = $data['nomLibro'];
         $valor = $data['valor'];

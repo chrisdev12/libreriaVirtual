@@ -51,6 +51,11 @@ if (isset($_POST) && !empty($_POST)) {
                 </div>
                 <input type="hidden" id="id_usuario" name="id_usuario" value="1">
                 <button class="btn btn-success">CREAR</button>
+                <?php
+                    if(isset($aa)){
+                        echo $aa;
+                    }
+                ?>
             </form>
         </div>
     </div>
