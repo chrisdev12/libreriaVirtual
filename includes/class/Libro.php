@@ -70,6 +70,6 @@ class Libro
         return mysqli_query($this->conn,$sql);
     }
     function getLibroByCategoria($categoria){
-        $sql = "SELECT * from tb_libros where id_categoria = $categoria"
+        $sql = "SELECT * from tb_libros where id_categoria = $categoria";
     }
 }

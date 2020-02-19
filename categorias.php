@@ -1,7 +1,9 @@
 <?php
 
+include('includes/class/Libro.php');
+$libro = new Libro;
 
-$arr = array("key1" => "value1", "key2" => "value2");
+$rom = $libro->getLibroByCategoria('Romance');
 
 
 ?>
@@ -25,6 +27,10 @@ $arr = array("key1" => "value1", "key2" => "value2");
             SIDE
         </div>
         <div id="result">
+
+            <?php
+                var_dump($rom);
+            ?>
             <div class="card" style="width: 18rem;">
                 <img src="..." class="card-img-top" alt="...">
                 <div class="card-body">
