@@ -1,6 +1,7 @@
 <?php
-
-
+include('includes/class_bd.php');
+$database = new Database();
+$prueba = $database->conectar();
 ?>
 
 <html lang="es">
@@ -8,8 +9,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+=======
+>>>>>>> 18b6e4417b6c00202b125d86f9a25755e6e3a209
     <link rel="stylesheet" href="./styles/index/styles.css">
     <title>Libreria Virtual</title>
 </head>
