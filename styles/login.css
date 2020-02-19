@@ -1,0 +1,14 @@
+.contenedorPrincipal {
+  height: 100vh;
+  /*IMPORTANTE*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedorHijo {
+    background: #E2E2E2;
+    padding: 50px 50px 50px 50px;
+    border-radius: 20px;
+    width: 30%
+}
