@@ -40,7 +40,6 @@ class Libro
         WHERE L.id_libro = $id";
 
 
-        
         return  mysqli_fetch_object(mysqli_query($this->conn, $sql));
 
     }
@@ -53,6 +52,12 @@ class Libro
     function delete($id){
         $sql = "DELETE FROM tb_libros where id_libro = $id";
         return mysqli_query($this->conn, $sql);
+    }
+    
+    function getLibroImg($id){
+        $sql = "SELECT ruta FROM tb_img_libro where id_libro=$id limit 1";
+        //return mysqli_fetch_object(mysqli_query($this->conn, $sql));
+        return mysqli_fetch_array(mysqli_query($this->conn, $sql));
     }
 
     function update($data){
