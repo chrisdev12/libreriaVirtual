@@ -84,4 +84,8 @@ class Libro
     function getLibroByCategoria($categoria){
         $sql = "SELECT * from tb_libros where id_categoria = $categoria";
     }
+    function getAutores(){
+        $sql = "SELECT id_autor, CONCAT(nom_autor,apell_autor) as persona FROM tb_autores";
+        return mysqli_query($this->conn, $sql);
+    }
 }

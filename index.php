@@ -24,10 +24,6 @@
 
     </footer> -->
 
-    <section>
-        <?php include('./libros/libro_form.php')
-        ?>
-    </section>
 
     <script src="js/bootstrap/bootstrap.min.js"></script>
     <script src="js/bootstrap/popper.min.js"></script>

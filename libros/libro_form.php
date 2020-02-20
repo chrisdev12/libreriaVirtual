@@ -1,7 +1,8 @@
 <?php
-include('includes/class/Libro.php');
+include('../includes/class/Libro.php');
 $libro = new Libro();
 $libro_categoria = $libro->getCategoria();
+$libro_autor = $libro->getAutores();
 
 if (isset($_POST) && !empty($_POST)) {
     $libro->guardarLibro($_POST);
@@ -22,10 +23,11 @@ if (isset($_POST) && !empty($_POST)) {
                 <div class="form-group">
                     <label>Autor:</label>
                     <select class="form-control" id="idAutor" name="id_autor">
-                        <option value="1">García Martin</option>
-                        <option value="2">Guía</option>
-                        <option value="3">Gutiérrez Solana</option>
-                        <option value="4">Guy Verhofstadt</option>
+                    <?php
+                    while($value = mysqli_fetch_object($libro_autor)){
+                        echo "<option value='$value->id_autor'>$value->persona</option>";
+                    }
+                    ?>
                     </select>
                 </div>
                 <div class="form-group">
