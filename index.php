@@ -7,7 +7,6 @@ $itr = 0;
 require_once 'config.php';
 ?>
 
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -20,8 +19,6 @@ require_once 'config.php';
     <link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="img/slider/devSlider/engine1/style.css" />
 </head>
-
-
 
 <body>
 
@@ -50,13 +47,9 @@ require_once 'config.php';
     </div>
     <main>
         <div class="container">
-
-
             <br>
             <br>
-
             <div class="container">
-
                 <?php
                 while (($datosLibros = mysqli_fetch_object($listaLibros)) && ($itr < 3)) {
                     $img = $libro->getLibroImg($datosLibros->id_libro);
@@ -85,6 +78,9 @@ require_once 'config.php';
     <?php
     include './secciones/footer.php';
     ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <script src="js/bootstrap/popper.min.js"></script>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

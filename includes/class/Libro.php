@@ -2,13 +2,13 @@
 include_once('class_bd.php');
 class Libro  
 {
-    public $idAutor;
-    public $nomLibro;
+    public $id_autor;
+    public $nom_libro;
     public $valor;
     public $descripcion;
     public $fecha_publicacion;
-    public $idCategoria;
-    public $idUsuario;
+    public $id_categoria;
+    public $id_usuario;
     public $conn;
 
     function __construct()
@@ -17,20 +17,28 @@ class Libro
         $this->conn = $db->conectar();
     }
 
-    function guardarLibro($data){
-        $idAutor = $data['idAutor'];
-        $nomLibro = $data['nomLibro'];
+    function guardarLibro($data)
+    {
+        $id_autor = $data['id_autor'];
+        $nom_libro = $data['nom_libro'];
         $valor = $data['valor'];
         $fecha_publicacion = $data['fecha_publicacion'];
-        $idCategoria = $data['idCategoria'];
-        $idUsuario = $data['idUsuario'];
+        $id_categoria = $data['id_categoria'];
+        $id_usuario = $data['id_usuario'];
         $descripcion = $data['descripcion'];
+        $aa = "";
 
-        $sql = "INSERT INTO tb_libros (id_autor, nom_libro, valor, fec_publicacion, id_categoria, id_usuario_cre, descripcion) 
-                VALUES($idAutor, '$nomLibro', $valor, '$fecha_publicacion', $idCategoria, $idUsuario,'$descripcion')";
-        return mysqli_query($this->conn, $sql);
-        
+        if (!isset($nom_libro) && empty($nom_libro)) {
+            $aa = "llenar todos los campos ....";
+            return $aa;
+        } else {
+            $sql = "INSERT INTO tb_libros (id_autor, nom_libro, valor, fec_publicacion, id_categoria, id_usuario_cre, descripcion) 
+                VALUES($id_autor, '$nom_libro', $valor, '$fecha_publicacion', $id_categoria, $id_usuario,'$descripcion')";
+            return mysqli_query($this->conn, $sql);
+        }
     }
+
+
 
     function getLibro($id){
         $sql = "SELECT L.*, A.nom_autor, C.nom_categoria, IL.nom_archivo_servidor FROM tb_libros L 
@@ -43,11 +51,13 @@ class Libro
     }
 
     function getLibros(){
+
         $sql = "SELECT * FROM tb_libros";
-        return mysqli_query($this->conn,$sql);
+        return mysqli_query($this->conn, $sql);
     }
 
-    function delete($id){
+    function delete($id)
+    {
         $sql = "DELETE FROM tb_libros where id_libro = $id";
         return mysqli_query($this->conn, $sql);
     }
@@ -58,18 +68,20 @@ class Libro
         return mysqli_fetch_array(mysqli_query($this->conn, $sql));
     }
 
-    function update($data){
-        $idAutor = $data['idAutor'];
-        $nomLibro = $data['nomLibro'];
+    function update($data)
+    {
+
+        $id_autor = $data['id_autor'];
+        $nom_libro = $data['nom_libro'];
         $valor = $data['valor'];
         $fecha_publicacion = $data['fecha_publicacion'];
-        $idCategoria = $data['idCategoria'];
-        $idUsuario = $data['idUsuario'];
+        $id_categoria = $data['id_categoria'];
+        $id_usuario = $data['id_usuario'];
         $descripcion = $data['descripcion'];
-        $idLibro = $data['idLibro'];
+        $id_libro = $data['idLibro'];
 
-        $sql = "UPDATE tb_libros SET nom_libro = '$nomLibro', valor = '$valor', fec_publicacion = '$fecha_publicacion', id_categoria = '$idCategoria', descripcion = '$descripcion'
-                WHERE id_libro = $idLibro";
+        $sql = "UPDATE tb_libros SET nom_libro = '$nom_libro', valor = '$valor', fec_publicacion = '$fecha_publicacion', id_categoria = '$id_categoria', descripcion = '$descripcion'
+                WHERE id_libro = $id_libro";
         return mysqli_query($this->conn, $sql);
     }
     function getCategoria()
@@ -79,5 +91,9 @@ class Libro
     }
     function getLibroByCategoria($categoria){
         $sql = "SELECT * from tb_libros where id_categoria = $categoria";
+    }
+    function getAutores(){
+        $sql = "SELECT id_autor, CONCAT(nom_autor,apell_autor) as persona FROM tb_autores";
+        return mysqli_query($this->conn, $sql);
     }
 }
