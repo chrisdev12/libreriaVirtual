@@ -22,7 +22,6 @@ $itr = 0;
 
 <body>
 
-
     <?php
     include 'navbar.php';
     ?>
