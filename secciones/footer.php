@@ -1,29 +1,9 @@
-<p>
-    © 2020 - VirtualBictia
-</p>
-<ul>
-    <li>
-        <a href="https://open.spotify.com/show/1LVrJtPKsPseSgUtB7xYuM" target="_blank">
-            <i class="fab fa-spotify"></i>
-        </a>
-    </li>
-    <li>
-        <a href="https://www.instagram.com" target="_blank">
-            <i class="fab fa-instagram"></i>
-        </a>
-    </li>
-    <li>
-        <a href="https://www.twitter.com" target="_blank">
-            <i class="fab fa-twitter"></i>
-        </a>
-    </li>
-    <li>
-        <a href="https://www.facebook.com" target="_blank">
-            <i class="fab fa-facebook"></i></a>
-    </li>
-    <li>
-        <a href="https://www.telegram.com" target="_blank">
-            <i class="fab fa-telegram"></i>
-        </a>
-    </li>
-</ul>
+<footer class="page-footer font-small blue">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="https://bictia.co"> BictiaLibrary.com</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
