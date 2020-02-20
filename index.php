@@ -26,7 +26,7 @@ $itr = 0;
 <body>
 
     <?php
-    include 'navbar.php';
+    include './secciones/navbar.php';
     ?>
 
     <div id="wowslider-container1">
@@ -56,25 +56,31 @@ $itr = 0;
             <br>
 
             <div class="container">
+                <div class='row'>
 
-                <?php
-                while (($itr < 3) && ($datosLibros = mysqli_fetch_object($listaLibros))) {
-                    $img = $libro->getLibroImg($datosLibros->id_libro)[0];
-                    // var_dump($datosLibros);
-                    // var_dump($img);
-                    echo "<div class='row'>
-                        <div class='col-sm'>
-                            <div class='card main-books' style='width: 18rem;'>
-                                <img src='" . $img . "' class='card-img-top' alt='IMAGEN NO CARGADA'>
-                                <div class='card-body'>
-                                    <h5 class='card-title'>$datosLibros->nom_libro</h5>
-                                    <a href='#' class='btn btn-primary'>Ver más</a>
+                    <?php
+                    while (($datosLibros = mysqli_fetch_object($listaLibros)) && ($itr < 3)) {
+                        $img = $libro->getLibroImg($datosLibros->id_libro)[0];
+                        $descripcion = subStr($datosLibros->descripcion,0,120);
+                        $descripcion .= ' ...';
+                        echo "
+                            <div class='col-sm'>
+                                <div class='card main-books'>
+                                    <img src='$img' class='card-img-top' alt='...'>
+                                    <div class='card-body'>
+                                        <h5 class='card-title'>$datosLibros->nom_libro</h5>
+                                        <span class='badge badge-success'>$datosLibros->valor</span>
+                                        </br>
+                                        </br>
+                                        <p class='card-text'>$descripcion</p>
+                                        <a href='libros/libroDetail.php?id=$datosLibros->id_libro' class='btn btn-primary'>Ver más</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>";
-                    $itr++;
-                }
-                ?>
+                            </div>";
+                        $itr++;
+                    }
+                    ?>
+                </div>
             </div>
     </main>
     <section>
