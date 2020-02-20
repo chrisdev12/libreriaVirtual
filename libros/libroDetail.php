@@ -1,9 +1,15 @@
 <?php
-include('../includes/class/Libro.php');
+include_once('../includes/class/Libro.php');
+include_once('../includes/class/Comentario.php');
 $libro = new Libro();
+$comentario = new Comentario();
+if(isset($_POST) && !empty($_POST)){
+    $comentario->guardarComentario($_GET['id'], $_POST);
+}
 if($_GET['id']){
     $getLibro = $libro->getLibro($_GET['id']);
     $categorias = $libro->getCategoria();
+    $getComentarios = $comentario->getComentarios($_GET['id']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,29 +32,39 @@ if($_GET['id']){
                 <span class="badge badge-warning"><?=$getLibro->fec_publicacion?></span>
                 <span class="badge badge-success">$ <?=$getLibro->valor ?></span>
                 <span class="badge badge-info"><?=$getLibro->nom_categoria?></span>
+                <h2>Sinopsis</h2>
                 <p><?=$getLibro->descripcion?></p>
             </div>
         </div>
         <?php
-
         if(isset($_GET['id_usuario'])){
         ?>
         <div class="row mt-2">
             <div class="col-md-12">
                 <h3 class="ml-3">Comentarios</h3>
-                <div class="form-group">
-                    <textarea class="form-control" name="comentario"></textarea>
-                    <button type="button" class="btn btn-primary mt-3 float-right">Enviar comentario</button>
-                </div>
+                <form method="POST">
+                    <div class="form-group">
+                        <textarea class="form-control" name="comentario"></textarea>
+                        <button class="btn btn-primary mt-3 float-right">Enviar comentario</button>
+                    </div>
+                </form>
             </div>
             </div>
         </div>
         <?php
         }
+        if($getComentarios){
+            while($comentario = mysqli_fetch_object($getComentarios)){
+                echo "<div class='card mt-3'>
+                <div class='card-body'>
+                  <h5 class='card-title'>Publicado el: $comentario->fec_cre</h5>
+                  <p class='card-text'>$comentario->comentario</p>
+                </div>
+              </div>";
+            }
+        }
         ?>
     </div>
-
-
     <script src="../js/bootstrap/bootstrap.min.js"></script>
     <script src="../js/bootstrap/popper.min.js"></script>
     
@@ -57,8 +73,8 @@ if($_GET['id']){
 <?php
 } else {
 ?>
-<div class="alert alert-danger" role="alert">
+<!-- <div class="alert alert-danger" role="alert">
         <strong>El libro que buscas no existe</strong>
-</div>
+</div> -->
 <?php
 } 

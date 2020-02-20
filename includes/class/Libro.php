@@ -1,5 +1,5 @@
 <?php
-include('class_bd.php');
+include_once('class_bd.php');
 class Libro  
 {
     public $idAutor;
@@ -38,9 +38,6 @@ class Libro
         INNER JOIN tb_categorias C on L.id_categoria = C.id_categoria 
         INNER JOIN tb_img_libro IL on L.id_libro = IL.id_libro 
         WHERE L.id_libro = $id";
-
-
-        
         return  mysqli_fetch_object(mysqli_query($this->conn, $sql));
 
     }

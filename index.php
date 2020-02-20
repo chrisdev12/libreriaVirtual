@@ -1,9 +1,3 @@
-<?php
-include('includes/class/class_bd.php');
-$database = new Database();
-$prueba = $database->conectar();
-?>
-
 <html lang="es">
 
 <head>
