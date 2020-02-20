@@ -1,24 +1,26 @@
-
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse col-md-10 " id="navbarNav">
+        <img class="img-fluid img-icon" src="img/icon.png" alt="">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">Inicio</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="#">Categorias</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <a class="nav-link hidden" href="#" tabindex="-1" aria-disabled="true">Nombre usuario</a>
             </li>
         </ul>
     </div>
+    <div class="collapse navbar-collapse col-md-2 ml-5" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active" >
+                <a class="btn btn-outline-primary m-2" href="session.php">Iniciar sesión</a>
+            </li>
+        </ul>
+    </div>
+
+    
+
 </nav>

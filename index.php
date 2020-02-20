@@ -4,6 +4,7 @@ include('includes/class/Libro.php');
 $libro = new Libro();
 $listaLibros = $libro->getLibros();
 $itr = 0;
+require_once 'config.php';
 ?>
 <?php ?>
 
@@ -21,6 +22,15 @@ $itr = 0;
     <link rel="stylesheet" type="text/css" href="styles/index.css" />
 </head>
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Document</title>
+    <link rel="icon" type="image/png" href="<?php echo $icon_tittle; ?>" />
+    <link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="img/slider/devSlider/engine1/style.css" />
+</head>
 
 
 <body>

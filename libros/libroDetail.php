@@ -28,8 +28,11 @@ if($_GET['id']){
             <div class="col-md-8">
                 <h2><?= $getLibro->nom_libro?></h2>
                 <hr>
+                <?php
+                    $fecha_libro = $getLibro->fec_publicacion;
+                ?>
                 <span class="badge badge-primary"><?=$getLibro->nom_autor?></span>
-                <span class="badge badge-warning"><?=$getLibro->fec_publicacion?></span>
+                <span class="badge badge-warning"><?=substr($fecha_libro,0,10)?></span>
                 <span class="badge badge-success">$ <?=$getLibro->valor ?></span>
                 <span class="badge badge-info"><?=$getLibro->nom_categoria?></span>
                 <h2>Sinopsis</h2>
@@ -55,9 +58,10 @@ if($_GET['id']){
         }
         if($getComentarios){
             while($comentario = mysqli_fetch_object($getComentarios)){
+                $fecha_comentario = $comentario->fec_cre;
                 echo "<div class='card mt-3'>
                 <div class='card-body'>
-                  <h5 class='card-title'>Publicado el: $comentario->fec_cre</h5>
+                  <h5 class='card-title'>Publicado el: ".substr($fecha_comentario,0,10)." </h5>
                   <p class='card-text'>$comentario->comentario</p>
                 </div>
               </div>";
