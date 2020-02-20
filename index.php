@@ -4,8 +4,9 @@ include('includes/class/Libro.php');
 $libro = new Libro();
 $listaLibros = $libro->getLibros();
 $itr = 0;
+require_once 'config.php';
 ?>
-<?php ?>
+
 
 <!DOCTYPE html>
 <html lang="es">
