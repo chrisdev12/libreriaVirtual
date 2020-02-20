@@ -18,6 +18,7 @@ require_once 'config.php';
     <title>Document</title>
     <link rel="icon" type="image/png" href="<?php echo $icon_tittle; ?>" />
     <link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" type="text/css" href="img/slider/devSlider/engine1/style.css" />
 </head>
 
