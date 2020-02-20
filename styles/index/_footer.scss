@@ -1,0 +1,49 @@
+footer {
+  height: 7.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-content: center;
+
+  p {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style: none;
+    margin:0 2.8125rem 0 2.8125rem;
+
+    li a{
+      color: $black;
+
+      .fab{
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: 850px) {
+  footer {
+    padding: 0 2rem 0 2rem;
+    height: 3.9375rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+
+    ul {
+      width: 20%;
+    }
+  }
+}

@@ -18,6 +18,7 @@ $itr = 0;
     <link rel="icon" type="image/png" href="<?php echo $icon_tittle; ?>" />
     <link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="img/slider/devSlider/engine1/style.css" />
+    <link rel="stylesheet" type="text/css" href="styles/index.css" />
 </head>
 
 
@@ -57,15 +58,16 @@ $itr = 0;
             <div class="container">
 
                 <?php
-                while (($datosLibros = mysqli_fetch_object($listaLibros)) && ($itr < 3)) {
-                    $img = $libro->getLibroImg($datosLibros->id_libro);
+                while (($itr < 3) && ($datosLibros = mysqli_fetch_object($listaLibros))) {
+                    $img = $libro->getLibroImg($datosLibros->id_libro)[0];
+                    // var_dump($datosLibros);
+                    // var_dump($img);
                     echo "<div class='row'>
                         <div class='col-sm'>
                             <div class='card main-books' style='width: 18rem;'>
-                                <img src='$img[0]' class='card-img-top' alt='...'>
+                                <img src='" . $img . "' class='card-img-top' alt='IMAGEN NO CARGADA'>
                                 <div class='card-body'>
                                     <h5 class='card-title'>$datosLibros->nom_libro</h5>
-                                    <p class='card-text'>$datosLibros->descripcion</p>
                                     <a href='#' class='btn btn-primary'>Ver más</a>
                                 </div>
                             </div>
