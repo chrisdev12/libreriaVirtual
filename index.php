@@ -6,7 +6,6 @@ $listaLibros = $libro->getLibros();
 $itr = 0;
 require_once 'config.php';
 ?>
-<?php ?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -30,13 +29,14 @@ require_once 'config.php';
     <link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" type="text/css" href="img/slider/devSlider/engine1/style.css" />
+    <link rel="stylesheet" type="text/css" href="styles/index.css" />
 </head>
 
 
 <body>
 
     <?php
-    include 'navbar.php';
+    include './secciones/navbar.php';
     ?>
 
     <div id="wowslider-container1">
@@ -66,25 +66,31 @@ require_once 'config.php';
             <br>
 
             <div class="container">
+                <div class='row'>
 
-                <?php
-                while (($itr < 3) && ($datosLibros = mysqli_fetch_object($listaLibros))) {
-                    $img = $libro->getLibroImg($datosLibros->id_libro)[0];
-                    // var_dump($datosLibros);
-                    // var_dump($img);
-                    echo "<div class='row'>
-                        <div class='col-sm'>
-                            <div class='card main-books' style='width: 18rem;'>
-                                <img src='" . $img . "' class='card-img-top' alt='IMAGEN NO CARGADA'>
-                                <div class='card-body'>
-                                    <h5 class='card-title'>$datosLibros->nom_libro</h5>
-                                    <a href='#' class='btn btn-primary'>Ver más</a>
+                    <?php
+                    while (($datosLibros = mysqli_fetch_object($listaLibros)) && ($itr < 3)) {
+                        $img = $libro->getLibroImg($datosLibros->id_libro)[0];
+                        $descripcion = subStr($datosLibros->descripcion,0,120);
+                        $descripcion .= ' ...';
+                        echo "
+                            <div class='col-sm'>
+                                <div class='card main-books'>
+                                    <img src='$img' class='card-img-top' alt='...'>
+                                    <div class='card-body'>
+                                        <h5 class='card-title'>$datosLibros->nom_libro</h5>
+                                        <span class='badge badge-success'>$datosLibros->valor</span>
+                                        </br>
+                                        </br>
+                                        <p class='card-text'>$descripcion</p>
+                                        <a href='libros/libroDetail.php?id=$datosLibros->id_libro' class='btn btn-primary'>Ver más</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>";
-                    $itr++;
-                }
-                ?>
+                            </div>";
+                        $itr++;
+                    }
+                    ?>
+                </div>
             </div>
     </main>
     <section>
