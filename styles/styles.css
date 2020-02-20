@@ -2,3 +2,10 @@
     width: 5%;
     margin-right: 3rem;
 }
+body {
+    background: #000;
+}
+.opcion_menu{
+    margin-top: 20px;
+    height: 200px;
+}
