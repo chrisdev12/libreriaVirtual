@@ -1,0 +1,15 @@
+.ordenAjax{
+    display: none;
+}
+.image-upload > input{
+    display: none;
+}
+.image-upload img{
+    width: 80px;
+    cursor: pointer;
+}
+.image-upload img:hover{
+    border: solid 2px;
+    border-color: #dddddd;
+    border-radius: 5px;
+}
