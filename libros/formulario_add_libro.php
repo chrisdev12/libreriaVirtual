@@ -342,9 +342,7 @@ if (isset($_POST) && !empty($_POST)) {
 
                     }
                 });
-            } else {
-                console.log('else');
-                return;
+            }
             }
         }
     </script>
