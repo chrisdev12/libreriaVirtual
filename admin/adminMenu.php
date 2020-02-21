@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../styles/bootstrap/bootstrap.min.css">
-        
+        <link rel="stylesheet" href="../styles/styles.css">
         <title>Menu administrador</title>
     </head>
     <body>
@@ -14,22 +14,28 @@
         <div class="container mt-3">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="opcion_menu">
-                        <h2>Autores</h2>
-                        <p>Aquí encontraras toda la información y utilidad sobre los autores</p>
-                    </div>
+                    <a href="../libros/libro_form.php">
+                        <div class="opcion_menu ">
+                            <h2 class="naranja">Libros</h2>
+                            <p>Aquí encontraras toda la información y utilidad sobre los libros</p>
+                        </div>
+                    </a>
                 </div>
                 <div class="col-md-6">
-                    <div class="opcion_menu">
-                        <h2>Libros</h2>
-                        <p>Aquí encontraras toda la información y utilidad sobre los autores</p>
-                    </div>
+                    <a href="../autores/autores_form.php">
+                        <div class="opcion_menu verde">
+                            <h2 class="verde">Autores</h2>
+                            <p>Aquí encontraras toda la información y utilidad sobre los autores</p>
+                        </div>
+                    </a>
                 </div>
-                <div class="col-md-6">
-                    <div class="opcion_menu">
-                        <h2>Categorias</h2>
-                        <p>Aquí encontraras toda la información y utilidad sobre los autores</p>
-                    </div>
+                <div class="col-md-6 azul">
+                    <a href="../categorias/categorias_form.php">
+                        <div class="opcion_menu">
+                            <h2 class="azul">Categorias</h2>
+                            <p>Aquí encontraras toda la información y utilidad sobre los categorias</p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
