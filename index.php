@@ -16,13 +16,8 @@ require_once 'config.php';
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Document</title>
     <link rel="icon" type="image/png" href="<?php echo $icon_tittle; ?>" />
-<<<<<<< HEAD
-    <link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/styles.css">
-=======
     <!-- <link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
->>>>>>> 7470984f7dea20a6bad4ceaeb5fef964b83d62ba
     <link rel="stylesheet" type="text/css" href="img/slider/devSlider/engine1/style.css" />
 </head>
 
