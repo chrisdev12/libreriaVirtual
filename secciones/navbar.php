@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+
+if($_SESSION){
+   var_dump($_SESSION['user']); 
+}
+?>
+
 <header>
     <nav class="navbar fixed-top  navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
@@ -21,8 +30,12 @@
                 </li>
             </ul>
             <div>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
-                <button class="btn btn-outline-primary ml-4 my-2 my-sm-0" type="submit">Registrar</button>
+                <a href="session.php">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+                </a>
+                <a href="registro/registro_user.php">
+                    <button class="btn btn-outline-primary ml-4 my-2 my-sm-0" type="submit">Registrar</button>
+                </a>
                 <button class="btn btn-outline-danger ml-4 my-2 my-sm-0" type="submit" hidden>Cerrar sesión</button>
             </div>
         </div>
