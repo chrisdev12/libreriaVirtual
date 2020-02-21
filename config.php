@@ -2,4 +2,4 @@
 
 $nom_proyecto = 'Libreria virtual';
 $dominio = "";
-$icon_tittle = "";
+$icon_tittle = "img/icon.png";

@@ -1,10 +1,9 @@
-<html lang="es">
-
 <?php
 include('includes/class/Libro.php');
 $libro = new Libro();
 $listaLibros = $libro->getLibros();
 $itr = 0;
+require_once 'config.php';
 ?>
 
 <!DOCTYPE html>
@@ -17,13 +16,18 @@ $itr = 0;
     <title>Document</title>
     <link rel="icon" type="image/png" href="<?php echo $icon_tittle; ?>" />
     <link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
+
+    <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" type="text/css" href="img/slider/devSlider/engine1/style.css" />
+    <link rel="stylesheet" type="text/css" href="styles/index.css" />
 </head>
+
+
 
 <body>
 
     <?php
-    include 'navbar.php';
+    include './secciones/navbar.php';
     ?>
 
     <div id="wowslider-container1">
@@ -47,26 +51,36 @@ $itr = 0;
     </div>
     <main>
         <div class="container">
+
             <br>
             <br>
+
             <div class="container">
-                <?php
-                while (($datosLibros = mysqli_fetch_object($listaLibros)) && ($itr < 3)) {
-                    $img = $libro->getLibroImg($datosLibros->id_libro);
-                    echo "<div class='row'>
-                        <div class='col-sm'>
-                            <div class='card main-books' style='width: 18rem;'>
-                                <img src='$img[0]' class='card-img-top' alt='...'>
-                                <div class='card-body'>
-                                    <h5 class='card-title'>$datosLibros->nom_libro</h5>
-                                    <p class='card-text'>$datosLibros->descripcion</p>
-                                    <a href='#' class='btn btn-primary'>Ver más</a>
+                <div class='row'>
+
+                    <?php
+                    while (($datosLibros = mysqli_fetch_object($listaLibros)) && ($itr < 3)) {
+                        $img = $libro->getLibroImg($datosLibros->id_libro)[0];
+                        $descripcion = subStr($datosLibros->descripcion,0,120);
+                        $descripcion .= ' ...';
+                        echo "
+                            <div class='col-sm'>
+                                <div class='card main-books'>
+                                    <img src='$img' class='card-img-top' alt='...'>
+                                    <div class='card-body'>
+                                        <h5 class='card-title'>$datosLibros->nom_libro</h5>
+                                        <span class='badge badge-success'>$datosLibros->valor</span>
+                                        </br>
+                                        </br>
+                                        <p class='card-text'>$descripcion</p>
+                                        <a href='libros/libroDetail.php?id=$datosLibros->id_libro' class='btn btn-primary'>Ver más</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>";
-                    $itr++;
-                }
-                ?>
+                            </div>";
+                        $itr++;
+                    }
+                    ?>
+                </div>
             </div>
     </main>
     <section>
@@ -85,6 +99,13 @@ $itr = 0;
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/bootstrap/bootstrap.min.js"></script>
+
+    <script src="js/bootstrap/popper.min.js"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+
     <script type="text/javascript" src="img/slider/devSlider/engine1/wowslider.js"></script>
     <script type="text/javascript" src="img/slider/devSlider/engine1/script.js"></script>
 </body>

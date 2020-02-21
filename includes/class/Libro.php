@@ -1,6 +1,7 @@
 <?php
-include('class_bd.php');
-class Libro
+include_once('class_bd.php');
+class Libro  
+
 {
     public $id_autor;
     public $nom_libro;
@@ -41,11 +42,13 @@ class Libro
 
 
     function getLibro($id){
-        $sql = "SELECT tb_libros.*, nom_autor, nom_categoria FROM tb_libros
-        INNER JOIN tb_autores on tb_libros.id_autor = tb_autores.id_autor
-        INNER JOIN tb_categorias on tb_libros.id_categoria = tb_categorias.id_categoria
-        WHERE id_libro = $id";
+        $sql = "SELECT L.*, A.nom_autor, C.nom_categoria, IL.nom_archivo_servidor FROM tb_libros L 
+        INNER JOIN tb_autores A on L.id_autor = A.id_autor 
+        INNER JOIN tb_categorias C on L.id_categoria = C.id_categoria 
+        INNER JOIN tb_img_libro IL on L.id_libro = IL.id_libro 
+        WHERE L.id_libro = $id";
         return  mysqli_fetch_object(mysqli_query($this->conn, $sql));
+
     }
 
     function getLibros(){
