@@ -42,6 +42,7 @@ CREATE TABLE tb_img_libro(
     nom_archivo_subido TEXT,
     nom_archivo_servidor TEXT,
     ruta TEXT,
+    principal BOOLEAN,
     fec_cre DATETIME DEFAULT NOW()
 );
 
