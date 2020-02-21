@@ -1,5 +1,5 @@
 <?php
-include_once('../includes/index.php/libro.php');
+include('../includes/index.php/libro.php');
 $libro = new Libro();
 $listadoLibros = $libro->getLibros();
 ?>
@@ -32,3 +32,6 @@ $listadoLibros = $libro->getLibros();
     </tr>
   </tbody>
 </table>
+
+
+.
