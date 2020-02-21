@@ -1,10 +1,5 @@
 <?php
-
 session_start();
-
-if($_SESSION){
-   var_dump($_SESSION['user']); 
-}
 ?>
 
 <header>
@@ -12,8 +7,7 @@ if($_SESSION){
         <a class="navbar-brand" href="#">
             LibreriaVirtual.co
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -30,13 +24,29 @@ if($_SESSION){
                 </li>
             </ul>
             <div>
-                <a href="session.php">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
-                </a>
-                <a href="registro/registro_user.php">
-                    <button class="btn btn-outline-primary ml-4 my-2 my-sm-0" type="submit">Registrar</button>
-                </a>
-                <button class="btn btn-outline-danger ml-4 my-2 my-sm-0" type="submit" hidden>Cerrar sesión</button>
+                <?php
+                if (!isset($_SESSION['user'])) {
+                ?>
+                    <a href="session.php">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+                    </a>
+                    <a href="registro/registro_user.php">
+                        <button class="btn btn-outline-primary ml-4 my-2 my-sm-0" type="submit">Registrar</button>
+                    </a>
+
+                <?php
+                } elseif (isset($_SESSION['user'])) {
+                ?>
+                    <a href="http://localhost/libreriaVirtual/includes/class/logout.php">
+                        <button class="btn btn-outline-danger ml-4 my-2 my-sm-0" type="submit">Cerrar sesión</button>
+                    </a>
+                <?php
+                }
+                ?>
+
+
+
+                <!--  -->
             </div>
         </div>
     </nav>
