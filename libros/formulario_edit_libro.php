@@ -8,26 +8,31 @@ include('../includes/class/class_libro_foto.php');
 require_once '../config.php';
 require_once '../includes/class/class_bd.php';
 
-$libro = new Libro();
-$libroFoto = new libroFoto();
-
-$libro_categoria = $libro->getCategoria();
-$libro_autor = $libro->getAutores();
-
+if(isset($_GET['id'])){
+    $libro = new Libro();
+    $getLibro = $libro->getLibro($_GET['id']);
+    $libro_categoria = $libro->getCategoria();
+    $libro_autor = $libro->getAutores();
+    $libro = new Libro();
+    if(isset($_POST) && !empty($_POST)){
+        $update = $libro->update($_POST);
+        if($update){
+            header('Location: admin_listado_libros.php');
+        } else {
+            echo "Error en la actualizacion";
+        }
+    }
+}
 ?>
-
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="icon" type="image/png" href="<?php echo $icon_tittle; ?>" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="../styles/estilo_form_libros.css">
+    <title>Formulario de edición</title>
 </head>
-
 <body>
     <section>
         <?php
@@ -35,17 +40,18 @@ $libro_autor = $libro->getAutores();
         ?>
     </section>
 
-
     <div class="container-fluid">
         <div class="row justify-content-md-center">
             <div class="col-md-6 card" style="margin: 20px 0 0; padding: 10px">
                 <div>
-                    <h3>Crear Nuevo Libro</h3>
+                    <h3>Editar libro: <?=$getLibro->nom_libro?></h3>
                 </div>
                 <form method="POST" name="formProducto" id="formProducto" enctype="multipart/form-data">
+                <input type="hidden" name="id_libro" value="<?=$getLibro->id_libro?>">
                     <div class="form-group">
                         <label>Autor:</label>
-                        <select class="form-control" id="id_autor" name="id_autor" onkeyup="val_input(1);">
+                        <select class="form-control" id="id_autor"  name="id_autor" onkeyup="val_input(1);">
+                            <option value="<?=$getLibro->id_autor?>"><?=$getLibro->nom_autor?></option>
                             <?php
                             while ($value = mysqli_fetch_object($libro_autor)) {
                                 echo "<option value='$value->id_autor'>" . utf8_decode($value->persona) . "</option>";
@@ -55,23 +61,24 @@ $libro_autor = $libro->getAutores();
                     </div>
                     <div class="form-group">
                         <label>Nombre del libro:</label>
-                        <input type="text" class="form-control" id="nom_libro" name="nom_libro" placeholder="Ej: Gabriel Garcia" onkeyup="val_input(2);">
+                        <input type="text" class="form-control" id="nom_libro" value="<?=$getLibro->nom_libro?>" name="nom_libro" placeholder="Ej: Gabriel Garcia" onkeyup="val_input(2);">
                     </div>
                     <div class="form-group">
                         <label>Precio:</label>
-                        <input type="text" class="form-control" id="valor" name="valor" placeholder="Ej: 124.000" onkeyup="val_input(3); formato_miles(this);">
+                        <input type="text" class="form-control" id="valor" value="<?=$getLibro->valor?>" name="valor" placeholder="Ej: 124.000" onkeyup="val_input(3); formato_miles(this);">
                     </div>
                     <div class="form-group">
                         <label>Descripcion:</label>
-                        <textarea class="form-control" name="descripcion" id="descripcion" cols="1" rows="2" onkeyup="val_input(4);"></textarea>
+                        <textarea class="form-control" name="descripcion" id="descripcion" cols="1" rows="2" onkeyup="val_input(4);"><?=$getLibro->descripcion?></textarea>
                     </div>
                     <div class="form-group">
                         <label>Fecha publicacion del libro:</label>
-                        <input type="date" class="form-control" name="fecha_publicacion" id="fecha_publicacion" onkeyup="val_input(5);">
+                        <input type="date" class="form-control" name="fecha_publicacion" id="fecha_publicacion" value="<?=$getLibro->fec_publicacion?>" onkeyup="val_input(5);">
                     </div>
                     <div class="form-group">
                         <label>Categoria:</label>
                         <select class="form-control" id="id_categoria" name="id_categoria" onkeyup="val_input(6);">
+                            <option value="<?=$getLibro->id_categoria?>"><?=$getLibro->nom_categoria?></option>
                             <?php
                             while ($value  = mysqli_fetch_object($libro_categoria)) {
                                 var_dump($value->id_categoria);
@@ -81,25 +88,8 @@ $libro_autor = $libro->getAutores();
                         </select>
                     </div>
                             <br>
-                    <?php
-
-                    for ($i = 0; $i <= 5; $i++) {
-                        echo "
-                                    <div class='input-group mb-3'>
-                                        <div class='input-group-prepend'>
-                                            <span class='input-group-text'>Imagen</span>
-                                        </div>
-                                        <div class='custom-file'>
-                                            <input type='file' class='custom-file-input' id='imgProducto$i' name='imgProducto$i'>
-                                            <label class='custom-file-label' for='imgProducto$i'>Buscar Archivo</label>
-                                        </div>
-                                    </div>
-                                    ";
-                    }
-
-                    ?>
                     <input type="hidden" id="id_usuario_consulta" name="id_usuario_consulta" value="<?php echo $_SESSION['user'] ?>">
-                    <button type="button" onclick="val_formulario()" id="btnAjax" name="btnAjax" style="width: 100%" class="btn btn-dark mb-3">Crear</button>
+                    <button type="submit" onclick="val_formulario()" id="btnAjax" name="btnAjax" style="width: 100%" class="btn btn-warning mb-3">Editar</button>
                     <!-- GIF carga ajax -->
                     <div style="text-align: center" class="ordenAjax" id="carga_ajax">
                         <img src="../img/cargando.gif" style="width: 50px;">
@@ -127,7 +117,7 @@ $libro_autor = $libro->getAutores();
                         <strong>El libro ingresado ya existe en la base de datos.</strong>
                     </div>
                     <div class="alert alert-success animated fadeInLeft ordenAjax" role="alert" id="ajaxCorrecto">
-                        <strong>Libro registrado correctamente.</strong>
+                        <strong>Libro actualizado correctamente.</strong>
                     </div>
                     <div class="alert alert-danger animated shake ordenAjax" role="alert" id="ajaxImgNull">
                         <strong>Tiene imagenes obligatorias pendientes por escojer.</strong>
@@ -145,7 +135,6 @@ $libro_autor = $libro->getAutores();
             </div>
         </div>
     </div>
-
 
     <section>
         <?php
@@ -232,114 +221,7 @@ $libro_autor = $libro->getAutores();
                 document.formProducto.id_categoria.style.border = '2px solid #5ab55a';
             }
         }
-
-        function llamado_registro_ajax() {
-            console.log(document.formProducto.nom_libro.value);
-            console.log(document.formProducto.valor.value);
-            console.log(document.formProducto.descripcion.value);
-            console.log(document.formProducto.fecha_publicacion.value);
-            if (document.formProducto.nom_libro.value != "" && document.formProducto.valor.value != "" && document.formProducto.descripcion.value != "" && document.formProducto.fecha_publicacion.value != "") {
-                var formData = new FormData($("#formProducto")[0]);
-                console.log(formData);
-                var id_autor = document.formProducto.id_autor.value;
-                var nom_libro = document.formProducto.nom_libro.value;
-                var valor = document.formProducto.valor.value;
-                var descripcion = document.formProducto.descripcion.value;
-                var fecha_publicacion = document.formProducto.fecha_publicacion.value;
-                var id_categoria = document.formProducto.id_categoria.value;
-
-                $.ajax({
-
-                    type: "POST",
-                    url: "crear_libro.php",
-                    data: formData,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    beforeSend: function() {
-                        $("#carga_ajax").show("fast");
-                        $("#alertNullFormName").hide("fast");
-                        $("#alertNullFormPrice").hide("fast");
-                        $("#alertNullFormCategoria").hide("fast");
-                        $("#alertNullFormFecPublic").hide("fast");
-                        $("#alertNullFormAutor").hide("fast");
-                        $("#alertNullFormDesc").hide("fast");
-                        $("#ajaxRepetido").hide("fast");
-                        $("#ajaxCorrecto").hide("fast");
-                        $("#ajaxImgNull").hide("fast");
-                        $("#ajaxImgError").hide("fast");
-                        $("#ajaxImgFatalError").hide("fast");
-                        $("#btnAjax").hide("fast");
-                    },
-
-                    success: function(resp) {
-                        $("#btnAjax").show("fast");
-                        $("#ajaxRepetido").hide("fast");
-                        $("#ajaxCorrecto").hide("fast");
-                        $("#ajaxImgNull").hide("fast");
-                        $("#carga_ajax").hide("fast");
-                        $("#ajaxImgError").hide("fast");
-                        $("#ajaxImgFatalError").hide("fast");
-                        // $('#ajax_respuesta').html(resp);
-
-                        if (resp == 1) {
-                            $("#btnAjax").show("fast");
-                            $("#carga_ajax").hide("fast");
-                            $("#ajaxRepetido").hide("fast");
-                            $("#ajaxImgNull").hide("fast");
-                            $("#ajaxCorrecto").show("fast");
-                            $("#ajaxImgError").hide("fast");
-                            $("#ajaxImgFatalError").hide("fast");
-                            // $('#ajax_respuesta').html(resp);
-                            document.formProducto.nom_libro.style.border = '1px solid #ced4da';
-                            document.formProducto.valor.style.border = '1px solid #ced4da';
-                            document.formProducto.id_categoria.style.border = '1px solid #ced4da';
-                            document.formProducto.descripcion.style.border = '1px solid #ced4da';
-                            formProducto.reset();
-                        } else if (resp == 2) {
-                            $("#btnAjax").show("fast");
-                            $("#carga_ajax").hide("fast");
-                            $("#ajaxRepetido").show("fast");
-                            $("#ajaxImgNull").hide("fast");
-                            $("#ajaxCorrecto").hide("fast");
-                            $("#ajaxImgError").hide("fast");
-                            $("#ajaxImgFatalError").hide("fast");
-                            // $('#ajax_respuesta').html(resp);
-                            document.formProducto.nom_libro.style.border = '2px solid red';
-                        } else if (resp == 3) {
-                            $("#btnAjax").show("fast");
-                            $("#ajaxRepetido").hide("fast");
-                            $("#ajaxImgNull").show("fast");
-                            $("#ajaxCorrecto").hide("fast");
-                            $("#carga_ajax").hide("fast");
-                            $("#ajaxImgError").hide("fast");
-                            $("#ajaxImgFatalError").hide("fast");
-                            // $('#ajax_respuesta').html(resp);
-                        } else if (resp == 4) {
-                            $("#btnAjax").show("fast");
-                            $("#ajaxRepetido").hide("fast");
-                            $("#ajaxImgNull").hide("fast");
-                            $("#ajaxCorrecto").hide("fast");
-                            $("#carga_ajax").hide("fast");
-                            $("#ajaxImgError").show("fast");
-                            $("#ajaxImgFatalError").hide("fast");
-                            // $('#ajax_respuesta').html(resp);
-                        } else if (resp == 5) {
-                            $("#btnAjax").show("fast");
-                            $("#ajaxRepetido").hide("fast");
-                            $("#ajaxImgNull").hide("fast");
-                            $("#ajaxCorrecto").hide("fast");
-                            $("#carga_ajax").hide("fast");
-                            $("#ajaxImgError").hide("fast");
-                            $("#ajaxImgFatalError").show("fast");
-                            // $('#ajax_respuesta').html(resp);
-                        }
-
-                    }
-                });
-            }
-        }
     </script>
+    
 </body>
-
 </html>
