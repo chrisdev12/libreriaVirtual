@@ -2,16 +2,26 @@
 
 include('includes/class/Libro.php');
 $libro = new Libro;
+$categorias = $libro->getCategorias();
+$libros;
 
-$libros = $libro->getLibroByCategoria('1');
+
+echo $_GET['cat'] == NULL;
+if($_GET['cat'] == NULL) {
+    $libros = $libro->getLibros();
+} else {
+    $libros = $libro->getLibroByCategoria($_GET['cat']);
+}
+
+// $libros = $libro->getLibroByCategoria('1');
 function mostrarLibro($datos_libro)
 {
-    $img = (new Libro)->getLibroImg($datos_libro->id_libro)[0];
+    //$img = (new Libro)->getLibroImg($datos_libro->id_libro)[0];
     $descripcion = subStr($datos_libro->descripcion, 0, 120);
     $descripcion .= ' ...';
     echo "<div class='col-sm'>
             <div class='card main-books'>
-                <img src='$img' class='card-img-top' alt='...'>
+                <!-- <img src='' class='card-img-top' alt='...'> -->
                 <div class='card-body'>
                     <h5 class='card-title'>$datos_libro->nom_libro</h5>
                     <span class='badge badge-success'>$datos_libro->valor</span>
@@ -32,7 +42,7 @@ function mostrarLibro($datos_libro)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/categorias.css">
+    <link rel="stylesheet" href="styles/catt.css">
     <title>Categorias Libreria Virtual</title>
 </head>
 
@@ -44,7 +54,15 @@ function mostrarLibro($datos_libro)
 
     <div class="principal">
         <div id="side">
-
+            <div class="categorias">
+                <h5>Categorías</h5>
+                <a href="categorias.php">Todos</a> <br>
+                <?php 
+                while($cat = mysqli_fetch_object($categorias)) {
+                    echo "<a href=\"?cat=$cat->id_categoria\"> $cat->nom_categoria   </a> <br>";
+                }
+                ?>
+            </div>
         </div>
 
         <div id="result">
@@ -60,7 +78,7 @@ function mostrarLibro($datos_libro)
 
     <!-- FOOTER -->
     <footer>
-        <?php include('secciones/footer.php'); ?>
+        <?php //include('secciones/footer.php'); ?>
     </footer>
     <script src="js/bootstrap/bootstrap.min.js"></script>
     <script src="js/bootstrap/popper.min.js"></script>
