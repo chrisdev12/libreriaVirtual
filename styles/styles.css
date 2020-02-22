@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .img-icon{
     width: 5%;
     margin-right: 3rem;
@@ -39,3 +40,8 @@ a:hover{
 .opcion_menu h2.azul{
     background: #56B9DD;
 } */
+=======
+#navbarSupportedContent{
+    margin-left: 30%;
+}
+>>>>>>> 76d0c49034ab95eb87d79e98bcfffa98706c2de5
