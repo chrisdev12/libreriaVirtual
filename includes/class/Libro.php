@@ -79,5 +79,6 @@ class Libro
     }
     function getLibroByCategoria($categoria){
         $sql = "SELECT * from tb_libros where id_categoria = $categoria";
+        return mysqli_query($this->conn, $sql);
     }
 }

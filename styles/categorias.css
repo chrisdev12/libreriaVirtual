@@ -1,0 +1,13 @@
+#side {
+    float: left;
+    height: 100vh;
+    background-color: red;
+    width: 20%;
+}
+
+#result {
+    float: right;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
