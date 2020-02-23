@@ -21,11 +21,11 @@ $listadoLibros = $libro->getLibros();
 </head>
 
 <body>
-    <section>
-        <?php
-        include '../secciones/navbar.php';
-        ?>
-    </section>
+
+    <?php
+    include '../secciones/navbar.php';
+    ?>
+
 
     <div class="container">
         <div class="row">
@@ -62,8 +62,10 @@ $listadoLibros = $libro->getLibros();
                             }
                         ?>
                     </tbody>
-                    <button type="button" class="btn btn-success">Agregar categoría</button>
                 </table>
+                <a href="formulario_add_libro.php" target="_blank" rel="noopener noreferrer">
+                    <button type="button" class="btn btn-success">Agregar libro</button>
+                </a>
             </div>
         </div>
     </div>

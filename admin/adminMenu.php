@@ -32,7 +32,7 @@
                     </a>
                 </div>
                 <div class="col-md-6">
-                    <a href="../autores/autores_form.php">
+                    <a href="../autores/admin_listado_autores.php">
                         <div class="opcion_menu verde">
                             <h2 class="verde">Autores</h2>
                             <p>Aquí encontraras toda la información y utilidad sobre los autores</p>

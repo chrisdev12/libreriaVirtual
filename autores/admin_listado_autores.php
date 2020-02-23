@@ -1,13 +1,16 @@
 <?php
+include('../includes/class/class_autor.php');
+
 session_start();
 if (!isset($_SESSION['user'])) {
     header("location: http://localhost/libreriaVirtual/session.php");
 }
-include('../includes/class/libro.php');
+require_once '../includes/class/class_bd.php';
+require '../includes/class/class_util.php';
+require '../config.php';
 
-
-$libro = new Libro();
-$listadoCategorias = $libro->getCategoria();
+$autor = new Autor();
+$listaAutores = $autor->getAllAutores();
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +20,7 @@ $listadoCategorias = $libro->getCategoria();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <title>Listado categorias</title>
+    <title>Listado autores</title>
 </head>
 
 <body>
@@ -33,20 +36,22 @@ $listadoCategorias = $libro->getCategoria();
                 <table class="table table-bordered table-hover mt-3">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col">id</th>
-                            <th scope="col">Categoria</th>
+                            <th scope="col">id autor</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
                             <th scope="col" colspan="2">Funcionalidades</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                            while($categoria = mysqli_fetch_object($listadoCategorias)){
+                            while($autor = mysqli_fetch_object($listaAutores)){
                                 echo "
                                 <tr>
-                                    <td>$categoria->id_categoria</td>
-                                    <td>".utf8_decode($categoria->nom_categoria)."</td>
+                                    <td>$autor->id_autor</td>
+                                    <td>".utf8_decode($autor->nom_autor)."</td>
+                                     <td>".utf8_decode($autor->apell_autor)."</td>
                                     <td>
-                                        <a class='btn btn-warning btn-sm m-auto' href='formulario_edit_categoria.php?id=$categoria->id_categoria'>Editar</a>
+                                        <a class='btn btn-warning btn-sm m-auto' href='formulario_edit_autor.php?id=$autor->id_autor'>Editar</a>
                                     </td>
                                 </tr>
                                 ";
@@ -54,8 +59,8 @@ $listadoCategorias = $libro->getCategoria();
                         ?>
                     </tbody>
                 </table>
-                <a href="formulario_add_categoria.php" rel="noopener noreferrer">
-                    <button type="button" class="btn btn-success">Agregar nueva categoria</button>
+                <a href="crear_autor.php" rel="noopener noreferrer">
+                    <button type="button" class="btn btn-success">Agregar nuevo autor</button>
                 </a>
             </div>
         </div>

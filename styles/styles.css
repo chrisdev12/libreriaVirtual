@@ -46,3 +46,7 @@ a:hover{
 .barraNav{
     position: sticky !important;
 }
+
+nav .navbar-nav{
+    list-style: none;
+}
