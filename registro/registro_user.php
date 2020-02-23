@@ -17,17 +17,21 @@ require_once '../config.php';
     </head>
     <body>
 
+    <?php
+        include_once '../secciones/navbar.php';
+    ?>
+
         <div class="contenedorPrincipal">
             <div class="contenedorHijo">
                 <h3>Inicio de sesion</h3><br>
                 <form method="POST" action="back_registro_user.php">
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="nombre">Nombre</label>
+                            <label for="nombre"><b>Nombre</b></label>
                             <input type="text" class="form-control" id="nombre" name="nombre" required="">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="apellido">Apellidos</label>
+                            <label for="apellido"><b>Apellidos</b></label>
                             <input type="text" class="form-control" id="apellido" name="apellido" required="">
                         </div>
                     </div>
