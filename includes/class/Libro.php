@@ -85,7 +85,7 @@ class Libro
                 WHERE id_libro = $id_libro";
         return mysqli_query($this->conn, $sql);
     }
-    function getCategorias()
+    function getCategoria()
     {
         $sql = "SELECT id_categoria,nom_categoria FROM tb_categorias";
         return mysqli_query($this->conn,$sql);
