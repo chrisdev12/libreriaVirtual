@@ -97,6 +97,18 @@ class Libro
         return mysqli_query($this->conn,$sql);
     }
     
+    function getCategoriaById($id){ //Traer solo la categoria con el id seleccionado
+        $sql = "SELECT * FROM tb_categorias WHERE id_categoria = $id";
+        return mysqli_fetch_object(mysqli_query($this->conn,$sql));
+    }
+    
+    function updateCategoriaById($id,$data){
+        $nombre = $data['nom_categoria'];
+        $sql = "UPDATE tb_categorias SET nom_categoria = '$nombre' 
+        WHERE id_categoria = $id";
+        return mysqli_query($this->conn,$sql);
+    }
+    
     //Traer todos los libros del mismo id_categoria con el nombre de la
     //categoria, la imagen del libro y ordenados de menos a mayor por su nombre
     function getLibrosByCategoria($categoria){
