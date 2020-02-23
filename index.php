@@ -25,7 +25,7 @@ require_once 'config.php';
 <body>
 
     <?php
-    include './secciones/navbar.php';
+    include 'secciones/navbar.php';
     ?>
 
     <div id="wowslider-container1">

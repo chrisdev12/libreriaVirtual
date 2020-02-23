@@ -36,7 +36,7 @@ if (isset($_POST) && !empty($_POST)) {
 <body>
     <section>
         <?php
-        include '../navbar.php';
+        include '../secciones/navbar.php';
         ?>
     </section>
 
