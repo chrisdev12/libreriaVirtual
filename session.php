@@ -20,7 +20,6 @@ if (isset($_SESSION['user'])) {
     if($user->userExists($userForm, $passForm)){
         //echo "Usuario valido";
         $userSession->setCurrentUser($userForm);
-        print_r($userSession);exit;
         $user->setUser($userForm);
         include_once 'index.php';
     }else{

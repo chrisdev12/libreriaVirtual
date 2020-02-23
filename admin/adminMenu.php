@@ -1,4 +1,5 @@
     <?php
+    include_once('../includes/class/class_user.php');
         session_start();
         if (!isset($_SESSION['user'])) {
             header("location: http://localhost/libreriaVirtual/session.php");
@@ -16,6 +17,7 @@
     <body>
         <?php
         include_once('../secciones/navbar.php');
+        
         ?>
         <div class="container mt-3">
             <div class="row">
