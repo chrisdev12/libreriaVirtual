@@ -35,9 +35,11 @@
                 <?php
                 } elseif (isset($_SESSION['user'])) {
                 ?>
-                    <li>
+                    <li style="color: #ffffff">
+                    Bienvenido: <b><?php echo $_SESSION['user']?></b>
                         <a href="http://localhost/libreriaVirtual/includes/class/logout.php">
-                            <button class="btn btn-outline-danger ml-4 my-2 my-sm-0" type="submit">Cerrar sesión</button>
+                        
+                            <button class="btn btn-outline-light ml-4 my-2 my-sm-0" type="submit">Cerrar sesión</button>
                         </a>
                     </li>
 
