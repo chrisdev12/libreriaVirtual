@@ -37,7 +37,7 @@ $listaLibros = $libro->getLibrosByCategoria($_GET['id']);
                         </br>
                         </br>
                         <p class='card-text'>$descripcion</p>
-                        <a href='libros/libroDetail.php?id=$libros->id_libro' class='btn btn-primary'>Ver más</a>
+                        <a href='../libros/libroDetail.php?id=$libros->id_libro' class='btn btn-primary'>Ver más</a>
                     </div>
                 </div>
             </div>";
