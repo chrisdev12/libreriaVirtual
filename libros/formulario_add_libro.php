@@ -31,7 +31,7 @@ $libro_autor = $libro->getAutores();
 <body>
     <section>
         <?php
-        include '../navbar.php';
+        include '../secciones/navbar.php';
         ?>
     </section>
 
