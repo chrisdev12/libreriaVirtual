@@ -10,7 +10,7 @@ if (isset($_POST) && !empty($_POST)) {
 }
 if ($_GET['id']) {
     $getLibro = $libro->getLibro($_GET['id']);
-    $categorias = $libro->getCategorias();
+    $categorias = $libro->getCategoria();
     $getComentarios = $comentario->getComentarios($_GET['id']);
 ?>
     <!DOCTYPE html>
