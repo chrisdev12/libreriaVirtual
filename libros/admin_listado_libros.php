@@ -31,7 +31,7 @@ $listadoLibros = $libro->getLibros();
                         <th scope="col">Valor</th>
                         <th scope="col">Fecha publicacion</th>
                         <th scope="col">Categoria</th>
-                        <th scope="col" colspan="2">funcionalidades</th>
+                        <th scope="col" colspan="2">Funcionalidades</th>
                     </tr>
                     </thead>
                     <tbody>
