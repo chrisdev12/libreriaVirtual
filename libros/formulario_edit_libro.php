@@ -10,7 +10,7 @@ require_once '../includes/class/class_bd.php';
 
 if(isset($_GET['id'])){
     $libro = new Libro();
-    $getLibro = $libro->getLibro($_GET['id']);
+    $getLibro = $libro->getDetalleLibro($_GET['id']);
     $libro_categoria = $libro->getCategoria();
     $libro_autor = $libro->getAutores();
     $libro = new Libro();

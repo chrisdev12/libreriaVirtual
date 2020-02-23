@@ -20,11 +20,10 @@ if($_GET['id']){
     <title><?php $getLibro->nom_libro ?></title>
 </head>
 <body>
-    <
-        div class="container mt-3">
+    <div class="container mt-3">
         <div class="row">
             <div class="col-md-4">
-                <img class="img-fluid" src="libros/img/<?=$getLibro->nom_archivo_servidor ?>" alt="Imagen del libro">
+                <img class="img-fluid" src="libros/img/<?=$getLibro->nom_archivo_servidor?>" alt="Imagen del libro">
             </div>
             <div class="col-md-8">
                 <h2><?= $getLibro->nom_libro?></h2>
