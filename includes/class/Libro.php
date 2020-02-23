@@ -39,8 +39,6 @@ class Libro
         }
     }
 
-
-
     function getLibro($id){
         $sql = "SELECT L.*, A.nom_autor, C.nom_categoria, IL.nom_archivo_servidor FROM tb_libros L 
         INNER JOIN tb_autores A on L.id_autor = A.id_autor 
@@ -57,6 +55,14 @@ class Libro
         INNER JOIN tb_autores A on L.id_autor = A.id_autor 
         INNER JOIN tb_categorias C on L.id_categoria = C.id_categoria";
         return mysqli_query($this->conn, $sql);
+    }
+
+    function getDetalleLibro($id){
+        $sql = "SELECT L.*, A.nom_autor, C.nom_categoria FROM tb_libros L 
+        INNER JOIN tb_autores A on L.id_autor = A.id_autor 
+        INNER JOIN tb_categorias C on L.id_categoria = C.id_categoria 
+        WHERE L.id_libro = $id";
+        return mysqli_fetch_object(mysqli_query($this->conn, $sql));
     }
 
     function delete($id)
