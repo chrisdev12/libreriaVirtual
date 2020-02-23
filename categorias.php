@@ -2,7 +2,7 @@
 
 include('includes/class/Libro.php');
 $libro = new Libro;
-$categorias = $libro->getCategorias();
+$categorias = $libro->getCategoria();
 $libros;
 
 
@@ -10,7 +10,7 @@ echo $_GET['cat'] == NULL;
 if($_GET['cat'] == NULL) {
     $libros = $libro->getLibros();
 } else {
-    $libros = $libro->getLibroByCategoria($_GET['cat']);
+    $libros = $libro->getLibrosByCategoria($_GET['cat']);
 }
 
 // $libros = $libro->getLibroByCategoria('1');
