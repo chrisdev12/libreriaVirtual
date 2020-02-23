@@ -38,7 +38,7 @@
                     </a>
                 </div>
                 <div class="col-md-6 azul">
-                    <a href="../categorias/categorias_form.php">
+                    <a href="../categorias/categorias.php">
                         <div class="opcion_menu">
                             <h2 class="azul">Categorias</h2>
                             <p>Aquí encontraras toda la información y utilidad sobre los categorias</p>
