@@ -109,6 +109,12 @@ class Libro
         return mysqli_query($this->conn,$sql);
     }
     
+    function addCategoria($data){
+        $nombre = $data['nom_categoria'];
+        $sql = "INSERT INTO tb_categorias (nom_categoria) VALUES('$nombre')";
+        return mysqli_query($this->conn,$sql);
+    }
+    
     //Traer todos los libros del mismo id_categoria con el nombre de la
     //categoria, la imagen del libro y ordenados de menos a mayor por su nombre
     function getLibrosByCategoria($categoria){

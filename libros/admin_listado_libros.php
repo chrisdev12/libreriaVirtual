@@ -62,6 +62,7 @@ $listadoLibros = $libro->getLibros();
                             }
                         ?>
                     </tbody>
+                    <button type="button" class="btn btn-success">Agregar categoría</button>
                 </table>
             </div>
         </div>

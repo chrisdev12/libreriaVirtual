@@ -55,6 +55,9 @@ $listadoCategorias = $libro->getCategoria();
                         ?>
                     </tbody>
                 </table>
+                <a href="formulario_add_categoria.php" rel="noopener noreferrer">
+                    <button type="button" class="btn btn-success">Agregar nueva categoria</button>
+                </a>
             </div>
         </div>
     </div>
