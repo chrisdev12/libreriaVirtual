@@ -2,9 +2,8 @@
 
 include('../includes/class/Libro.php');
 $libro = new Libro;
-$rom = $libro->getLibroByCategoria('Romance');
+$rom = $libro->getCategoria();
 ?>
-
 <html lang="en">
 
 <head>
@@ -23,26 +22,15 @@ $rom = $libro->getLibroByCategoria('Romance');
 
     <section class="contenedor-principal">
         <div class="contendor-categorias">
-            <div class="contenedor-una-categoria">
-                <div class="card">
-                    <h2>categoria</h2>
-                </div>
-            </div>
-            <div class="contenedor-una-categoria">
-                <div class="card">
-                    <h2>categoria</h2>
-                </div>
-            </div>
-            <div class="contenedor-una-categoria">
-                <div class="card">
-                    <h2>categoria</h2>
-                </div>
-            </div>
-            <div class="contenedor-una-categoria">
-                <div class="card">
-                    <h2>categoria</h2>
-                </div>
-            </div>
+            <?php
+            while ($value  = mysqli_fetch_object($rom)) {
+                echo "<div class='contenedor-una-categoria'>
+                        <div class='card'>
+                        <a href='orderBy.php?id=$value->id_categoria' class='ancla'><h2>$value->nom_categoria</h2><a>
+                        </div>
+                    </div>";
+            }
+            ?>
         </div>
     </section>
 
