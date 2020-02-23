@@ -21,8 +21,6 @@ require_once 'config.php';
     <link rel="stylesheet" type="text/css" href="styles/index.css" />
 </head>
 
-
-
 <body>
 
     <?php
@@ -50,7 +48,6 @@ require_once 'config.php';
     </div>
     <main>
         <div class="container">
-
             <br>
             <div class="container">
                 <div class='row'>
@@ -89,9 +86,6 @@ require_once 'config.php';
     <?php
     include './secciones/footer.php';
     ?>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="js/bootstrap/bootstrap.min.js"></script>
-    <script src="js/bootstrap/popper.min.js"></script>
 
 
     <!-- <script src="js/jquery-3.4.1.min.js"></script>

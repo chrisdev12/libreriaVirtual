@@ -53,7 +53,9 @@ class Libro
 
     function getLibros(){
 
-        $sql = "SELECT * FROM tb_libros";
+        $sql = "SELECT L.*, A.nom_autor, C.nom_categoria FROM tb_libros L 
+        INNER JOIN tb_autores A on L.id_autor = A.id_autor 
+        INNER JOIN tb_categorias C on L.id_categoria = C.id_categoria";
         return mysqli_query($this->conn, $sql);
     }
 
@@ -71,17 +73,15 @@ class Libro
 
     function update($data)
     {
-
+        $id_libro = $data['id_libro'];
         $id_autor = $data['id_autor'];
         $nom_libro = $data['nom_libro'];
         $valor = $data['valor'];
         $fecha_publicacion = $data['fecha_publicacion'];
         $id_categoria = $data['id_categoria'];
-        $id_usuario = $data['id_usuario'];
         $descripcion = $data['descripcion'];
-        $id_libro = $data['idLibro'];
 
-        $sql = "UPDATE tb_libros SET nom_libro = '$nom_libro', valor = '$valor', fec_publicacion = '$fecha_publicacion', id_categoria = '$id_categoria', descripcion = '$descripcion'
+        $sql = "UPDATE tb_libros SET id_autor = $id_autor, nom_libro = '$nom_libro', valor = '$valor', fec_publicacion = '$fecha_publicacion', id_categoria = '$id_categoria', descripcion = '$descripcion'
                 WHERE id_libro = $id_libro";
         return mysqli_query($this->conn, $sql);
     }
