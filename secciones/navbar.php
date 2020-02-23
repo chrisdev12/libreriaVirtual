@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="http://localhost/libreriaVirtual/styles/styles.css">
 <div class="conteiner">
     <nav class="navbar fixed-top  navbar-expand-lg navbar-dark bg-dark barraNav">
-        <a class="navbar-brand mr-5" href="http://localhost/libreriaVirtual/">
+        <a class="navbar-brand mr-4" href="http://localhost/libreriaVirtual/session.php">
             <img src="http://localhost/libreriaVirtual/img/icon.png" width="30" height="30" alt="">&nbsp;LibreriaVirtual
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,13 +34,35 @@
                     </li>
                 <?php
                 } elseif (isset($_SESSION['user'])) {
+                    $conector_bd = new Database();
+                    $query_nav = 'SELECT id_perfil FROM tb_usuario WHERE correo = "' . $_SESSION['user'] . '"';
+                    $id_user = mysqli_query($conector_bd->conectar(), $query_nav);
+                    mysqli_close($conector_bd->conectar());
                 ?>
-                    <li>
-                        <a href="http://localhost/libreriaVirtual/includes/class/logout.php">
-                            <button class="btn btn-outline-danger ml-4 my-2 my-sm-0" type="submit">Cerrar sesión</button>
-                        </a>
+
+                    <li style="color: #ffffff; justify-content: center; align-items: center;" class="pt-2">
+                        Bienvenido: <b><?php echo $_SESSION['user'] ?></b>
                     </li>
 
+                    <?php
+                    while ($id_perfil_user = mysqli_fetch_array($id_user)) {
+                        if ($id_perfil_user['id_perfil'] == 1) {
+                    ?>
+                            <li>
+                                <a href="http://localhost/libreriaVirtual/admin/adminMenu.php">
+                                    <button class="btn btn-outline-light ml-4 my-2 my-sm-0">Administracion</button>
+                                </a>
+                            </li>
+                        <?php
+                        }
+                    }
+                    ?>
+                    <li style="color: #ffffff">
+
+                        <a href="http://localhost/libreriaVirtual/includes/class/logout.php">
+                            <button class="btn btn-outline-light ml-4 my-2 my-sm-0">Cerrar sesión</button>
+                        </a>
+                    </li>
                 <?php
                 }
                 ?>

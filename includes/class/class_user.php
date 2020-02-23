@@ -6,6 +6,7 @@ class user extends Database {
 
     private $nombre;
     private $username;
+    private $id_perfil;
 
     public function userExists($user, $pass) {
         $pass_bd = $this->connect_user_session()->prepare("SELECT pass FROM tb_usuario WHERE correo = '$user'");
@@ -40,13 +41,22 @@ class user extends Database {
         $query->execute(['user' => $user]);
 
         foreach ($query as $currentUser) {
+            
             $this->nombre = $currentUser['nom_usuario'];
             $this->username = $currentUser['correo'];
+            $this->id_perfil =$currentUser['id_perfil'];
+            
         }
     }
 
     public function getNombre() {
-        return $this->nombre;
+        $nombre_prueba = $this->nombre;
+        
+        return $nombre_prueba;
+    }
+
+    public function getIdPerfil(){
+        return $this->id_perfil;
     }
 
 }

@@ -1,5 +1,12 @@
+    <?php
+    include_once('../includes/class/class_user.php');
+        session_start();
+        if (!isset($_SESSION['user'])) {
+            header("location: http://localhost/libreriaVirtual/session.php");
+        }
+    ?>
     <!DOCTYPE html>
-    <html lang="en">
+    <html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +16,8 @@
     </head>
     <body>
         <?php
-        include('../secciones/navbar.php');
+        include_once('../secciones/navbar.php');
+        
         ?>
         <div class="container mt-3">
             <div class="row">

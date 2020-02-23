@@ -1,4 +1,5 @@
 <?php
+include_once('includes/class/class_user.php');
 include('includes/class/Libro.php');
 $libro = new Libro();
 $listaLibros = $libro->getLibros();
