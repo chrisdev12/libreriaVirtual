@@ -44,14 +44,19 @@ $libro_autor = $libro->getAutores();
                 </div>
                 <form method="POST" name="formProducto" id="formProducto" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label>Autor:</label>
-                        <select class="form-control" id="id_autor" name="id_autor" onkeyup="val_input(1);">
-                            <?php
-                            while ($value = mysqli_fetch_object($libro_autor)) {
-                                echo "<option value='$value->id_autor'>" . utf8_decode($value->persona) . "</option>";
-                            }
-                            ?>
-                        </select>
+                        <div>
+                            <label>Autor:</label>
+                            <select class="form-control" id="id_autor" name="id_autor" onkeyup="val_input(1);">
+                                <?php
+                                while ($value = mysqli_fetch_object($libro_autor)) {
+                                    echo "<option value='$value->id_autor'>" . utf8_decode($value->persona) . "</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div style="margin-top: 10px">
+                            <a href="../autores/crear_autor.php" class="btn btn-success">CREAR AUTOR</a>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Nombre del libro:</label>
