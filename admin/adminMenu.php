@@ -7,6 +7,7 @@
     ?>
     <!DOCTYPE html>
     <html lang="es">
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,7 @@
         <link rel="stylesheet" href="../styles/styles.css">
         <title>Menu administrador</title>
     </head>
+
     <body>
         <?php
         include_once('../secciones/navbar.php');
@@ -22,7 +24,7 @@
         <div class="container mt-3">
             <div class="row">
                 <div class="col-md-6">
-                    <a href="../libros/libro_form.php">
+                    <a href="../libros/admin_listado_libros.php">
                         <div class="opcion_menu ">
                             <h2 class="naranja">Libros</h2>
                             <p>Aquí encontraras toda la información y utilidad sobre los libros</p>
@@ -54,6 +56,7 @@
 
         <script src="../js/bootstrap/bootstrap.min.js"></script>
         <script src="../js/bootstrap/popper.min.js"></script>
-        
+
     </body>
+
     </html>

@@ -1,6 +1,6 @@
 <?php
 
-// $categoria = $_GET['id'];
+session_start();
 include('../includes/class/Libro.php');
 $libro = new Libro();
 $listaLibros = $libro->getLibrosByCategoria($_GET['id']);

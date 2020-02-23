@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include('../includes/class/Libro.php');
 $libro = new Libro;
 $rom = $libro->getCategoria();

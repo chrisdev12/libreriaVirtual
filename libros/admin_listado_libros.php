@@ -12,33 +12,35 @@ $listadoLibros = $libro->getLibros();
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <title>Listado libros</title>
 </head>
+
 <body>
     <section>
         <?php
         include '../secciones/navbar.php';
         ?>
     </section>
-    
+
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-            <table class="table table-bordered table-hover mt-3">
+                <table class="table table-bordered table-hover mt-3">
                     <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">Autor</th>
-                        <th scope="col">Nombre libro</th>
-                        <th scope="col">Valor</th>
-                        <th scope="col">Fecha publicacion</th>
-                        <th scope="col">Categoria</th>
-                        <th scope="col" colspan="2">Funcionalidades</th>
-                    </tr>
+                        <tr>
+                            <th scope="col">id</th>
+                            <th scope="col">Autor</th>
+                            <th scope="col">Nombre libro</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Fecha publicacion</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col" colspan="2">Funcionalidades</th>
+                        </tr>
                     </thead>
                     <tbody>
                         <?php
@@ -65,4 +67,5 @@ $listadoLibros = $libro->getLibros();
         </div>
     </div>
 </body>
+
 </html>
