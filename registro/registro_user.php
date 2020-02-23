@@ -17,6 +17,10 @@ require_once '../config.php';
     </head>
     <body>
 
+    <?php
+        include_once '../secciones/navbar.php';
+    ?>
+
         <div class="contenedorPrincipal">
             <div class="contenedorHijo">
                 <h3>Inicio de sesion</h3><br>
