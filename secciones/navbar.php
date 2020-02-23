@@ -21,7 +21,7 @@
                     <a class="nav-link" href="http://localhost/libreriaVirtual/categorias/categorias.php">Libros</a>
                 </li>
             </ul>
-            <ul class="navbar-nav ml-auto">
+            <ul c lass="navbar-nav ml-auto">
                 <?php
                 if (!isset($_SESSION['user'])) {
                 ?>
