@@ -85,14 +85,24 @@ class Libro
                 WHERE id_libro = $id_libro";
         return mysqli_query($this->conn, $sql);
     }
+    
     function getCategoria()
     {
         $sql = "SELECT id_categoria,nom_categoria FROM tb_categorias";
         return mysqli_query($this->conn,$sql);
     }
-    function getLibroByCategoria($categoria){
-        $sql = "SELECT * from tb_libros where id_categoria = $categoria";
+    
+    //Traer todos los libros del mismo id_categoria con el nombre de la
+    //categoria, la imagen del libro y ordenados de menos a mayor por su nombre
+    function getLibrosByCategoria($categoria){
+        $sql = "SELECT lib.id_libro, lib.nom_libro, lib.descripcion,
+        lib.valor, cat.nom_categoria
+        from tb_libros lib INNER JOIN tb_categorias cat on 
+        lib.id_categoria = cat.id_categoria where lib.id_categoria = $categoria 
+        ORDER BY lib.nom_libro ASC";   
+        return mysqli_query($this->conn,$sql);
     }
+    
     function getAutores(){
         $sql = "SELECT id_autor, CONCAT(nom_autor,apell_autor) as persona FROM tb_autores";
         return mysqli_query($this->conn, $sql);
