@@ -1,10 +1,10 @@
 <?php
-
+session_start();
 include('../includes/class/Libro.php');
 $libro = new Libro;
 $rom = $libro->getCategoria();
 ?>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">

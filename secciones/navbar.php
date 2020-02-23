@@ -12,10 +12,18 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="http://localhost/libreriaVirtual/session.php">Inicio<span class="sr-only">(current)</span></a>
+                    <?php if (!isset($_SESSION['user'])) {
+                    ?>
+                        <a class="nav-link" href="http://localhost/libreriaVirtual">Inicio<span class="sr-only">(current)</span></a>
+                    <?php
+                    } else {
+                    ?>
+                        <a class="nav-link" href="http://localhost/libreriaVirtual/session.php">Inicio<span class="sr-only">(current)</span></a>
+                    <?php
+                    } ?>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="http://localhost/libreriaVirtual/libros/formulario_add_libro.php">Libros</a>
+                    <a class="nav-link" href="http://localhost/libreriaVirtual/categorias/categorias.php">Libros</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -53,7 +61,7 @@
                                     <button class="btn btn-outline-light ml-4 my-2 my-sm-0">Administracion</button>
                                 </a>
                             </li>
-                        <?php
+                    <?php
                         }
                     }
                     ?>
