@@ -1,11 +1,17 @@
 <?php
+session_start();
+if (!isset($_SESSION['user'])) {
+    header("location: http://localhost/libreriaVirtual/session.php");
+}
 include('../includes/class/libro.php');
+
+
 $libro = new Libro();
 $listadoLibros = $libro->getLibros();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +21,7 @@ $listadoLibros = $libro->getLibros();
 <body>
     <section>
         <?php
-        include '../navbar.php';
+        include '../secciones/navbar.php';
         ?>
     </section>
     
