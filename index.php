@@ -14,7 +14,7 @@ require_once 'config.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Document</title>
+    <title>LibreriaVirtual.co</title>
     <link rel="icon" type="image/png" href="<?php echo $icon_tittle; ?>" />
     <link rel="stylesheet" type="text/css" href="styles/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="styles/styles.css">

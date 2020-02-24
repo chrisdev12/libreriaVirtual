@@ -11,9 +11,9 @@ require '../config.php';
 $obj_util = new util();
 
 $id_autor = $_POST['id_autor'];
-$nom_libro = ucwords(utf8_decode($_POST['nom_libro']));
+$nom_libro = ucwords(utf8_encode($_POST['nom_libro']));
 $valor = $obj_util->limpia_dato_miles($_POST['valor']);
-$descripcion = ucwords(utf8_decode($_POST['descripcion']));
+$descripcion = ucwords(utf8_encode($_POST['descripcion']));
 $fecha_publicacion = $_POST['fecha_publicacion'];
 $id_categoria = $_POST['id_categoria'];
 $correo_user_session = $_POST['id_usuario_consulta'];
