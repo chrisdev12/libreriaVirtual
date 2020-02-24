@@ -38,8 +38,8 @@ if ($_GET['id']) {
                     $ruta = mysqli_query($database->conectar(),$img_libro);
                     mysqli_close($database->conectar());
                     while($ruta_completa = mysqli_fetch_array($ruta)){
-                        $ruta_v = $ruta_completa['ruta'];
-                        echo "<img class='img-fluid' src='libros/img/$ruta_v' alt='Imagen del libro'>";
+                        $ruta_v = substr($ruta_completa['ruta'],7);
+                        echo "<img class='img-fluid' src='$ruta_v' alt='Imagen del libro'>";
                     }
                     
                 ?>
