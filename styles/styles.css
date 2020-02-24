@@ -50,3 +50,15 @@ a:hover{
 nav .navbar-nav{
     list-style: none;
 }
+
+.main-books img{
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+}
+
+#cat-flex .main-books{
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
