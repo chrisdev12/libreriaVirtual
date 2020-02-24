@@ -59,16 +59,16 @@ require_once 'config.php';
                     while (($datosLibros = mysqli_fetch_object($listaLibros)) && ($itr < 3)) {
                         $ruta_img_libro = $img_libro->get_ruta_principal_img_libro($datosLibros->id_libro);
                         while ($ruta = mysqli_fetch_object($ruta_img_libro)) {
-                            $ruta_completa = 'http://localhost/libreriaVirtual/'.$ruta->ruta;
-                        if(file_exists(substr($ruta->ruta,7))){
-                            $ruta_completa_v = $ruta_completa;
-                        }else{
-                            $ruta_completa_v = 'http://localhost/libreriaVirtual/libros/img_libros/404/404.png';
-                        }
-                        // $img = $libro->getLibroImg($datosLibros->id_libro)[0];
-                        $descripcion = subStr($datosLibros->descripcion,0,120);
-                        $descripcion .= ' ...';
-                        echo "
+                            $ruta_completa = 'http://localhost/libreriaVirtual/' . $ruta->ruta;
+                            if (file_exists(substr($ruta->ruta, 7))) {
+                                $ruta_completa_v = $ruta_completa;
+                            } else {
+                                $ruta_completa_v = 'http://localhost/libreriaVirtual/libros/img_libros/404/404.png';
+                            }
+                            // $img = $libro->getLibroImg($datosLibros->id_libro)[0];
+                            $descripcion = subStr($datosLibros->descripcion, 0, 120);
+                            $descripcion .= ' ...';
+                            echo "
                             <div class='col-sm'>
                                 <div class='card main-books'>
                                     <img src='$ruta_completa_v' class='card-img-top' alt='...'>
@@ -82,19 +82,45 @@ require_once 'config.php';
                                     </div>
                                 </div>
                             </div>";
-                        $itr++;
+                            $itr++;
+                        }
                     }
-                }
                     ?>
                 </div>
             </div>
     </main>
-    <section>
-
+    <section class="container">
+        <hr class="my-5">
+        <div class="jumbotron">
+            <h4 class="display-4">Echa un vistazo al resto de los libros!</h4>
+            <p class="lead">Haciendo click en el botón de más abajo puedes acceder al resto de nuestra biblioteca. Esperamos te guste y puede que te antojes de algo!</p>
+            <p class="lead">
+                <a href="categorias/categorias.php" class="btn btn-primary btn-lg">Ver más</a>
+            </p>
+        </div>
     </section>
-    <form method="POST">
 
-    </form>
+    <div class="container contact">
+        <!-- <div class="divider"></div> -->
+        <hr class="my-5">
+        <h2>Contáctanos!</h2>
+        <form>
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
+            </div>
+            <div class="form-group">
+                <label for="correo">Correo</label>
+                <input type="email" class="form-control" id="correo" aria-describedby="emailHelp" placeholder="Ingresa tu correo">
+                <small id="correosub" class="form-text text-muted">No compartiremos tu dirección de correo con nadie</small>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Comentario</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
     <?php
     include './secciones/footer.php';
     ?>
@@ -104,11 +130,9 @@ require_once 'config.php';
     <script src="js/bootstrap/bootstrap.min.js"></script>
     <script src="js/popper.min.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
     <script type="text/javascript" src="img/slider/devSlider/engine1/wowslider.js"></script>
     <script type="text/javascript" src="img/slider/devSlider/engine1/script.js"></script>
