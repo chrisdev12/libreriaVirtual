@@ -2,6 +2,8 @@
 
 session_start();
 include('../includes/class/Libro.php');
+include('../includes/class/class_img_libro.php');
+$img_libro = new Imagen_libro();
 $libro = new Libro();
 $listaLibros = $libro->getLibrosByCategoria($_GET['id']);
 
@@ -24,14 +26,16 @@ $listaLibros = $libro->getLibrosByCategoria($_GET['id']);
 
     <?php
     while ($libros = mysqli_fetch_object($listaLibros)) {
-        $img = $libro->getLibroImg($libros->id_libro)[0];
+        $ruta_img_libro = $img_libro->get_ruta_principal_img_libro($libros->id_libro);
+            while ($ruta = mysqli_fetch_object($ruta_img_libro)) {
+                $ruta_completa = 'http://localhost/libreriaVirtual/'.$ruta->ruta;
         $descripcion = subStr($libros->descripcion,0,120);  
         $descripcion .= ' ...';
         echo "
-            <div class='col-sm'>
+            <div class='col-sm' id='cat-flex'>
                 <div class='card main-books'>
-                    <img src='$img' class='card-img-top' alt='...'>
-                    <div class='card-body'>
+                    <img src='$ruta_completa' class='card-img-top' alt='...'>
+                    <div class='card-body col-sm-8'>
                         <h5 class='card-title'>$libros->nom_libro</h5>
                         <span class='badge badge-success'>$libros->valor</span>
                         </br>
@@ -41,6 +45,7 @@ $listaLibros = $libro->getLibrosByCategoria($_GET['id']);
                     </div>
                 </div>
             </div>";
+        }
     }
     ?>
 </body>
