@@ -22,7 +22,7 @@ require_once 'config.php';
         include_once 'secciones/navbar.php'
     ?>
 
-        <div class="container">
+        <div class="contenedorPrincipal">
             <div class="contenedorHijo">
                 <h3>Inicio de sesion</h3><br>
                 <form method="POST">
