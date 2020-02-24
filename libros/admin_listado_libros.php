@@ -25,10 +25,10 @@ $img_libro = new Imagen_libro();
 </head>
 
 <style>
-    .imgLibro{
-        width: 30px;
-        height: 30px;
-    }
+.imgLibro {
+    width: 30px;
+    height: 30px;
+}
 </style>
 
 <body>
