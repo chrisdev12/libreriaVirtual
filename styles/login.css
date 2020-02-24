@@ -1,14 +1,14 @@
 .contenedorPrincipal {
-  height: 80vh;
+  /* height: 80vh; */
   /*IMPORTANTE*/
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
 
 .contenedorHijo {
-    background: #E2E2E2;
+    /* background: #E2E2E2;
     padding: 50px 50px 50px 50px;
     border-radius: 20px;
-    width: 30%
+    width: 30% */
 }
