@@ -41,7 +41,7 @@ if ($_GET['id']) {
                         
                         $ruta_v = substr($ruta_completa['ruta'],7);
                         if(file_exists($ruta_v)){
-                            $ruta_v = $ruta_v;
+                            $ruta_v = utf8_encode($ruta_v);
                         } else {
                             $ruta_v = "http://localhost/libreriaVirtual/libros/img_libros/404/404.png";
                         }
@@ -52,17 +52,17 @@ if ($_GET['id']) {
                 
             </div>
             <div class="col-md-8">
-                <h2><?= $getLibro->nom_libro ?></h2>
+                <h2><?= utf8_encode($getLibro->nom_libro) ?></h2>
                 <hr>
                 <?php
                     $fecha_libro = $getLibro->fec_publicacion;
                     ?>
-                <span class="badge badge-primary"><?= $getLibro->nom_autor ?></span>
+                <span class="badge badge-primary"><?= utf8_encode($getLibro->nom_autor) ?></span>
                 <span class="badge badge-warning"><?= substr($fecha_libro, 0, 10) ?></span>
                 <span class="badge badge-success">$ <?= $getLibro->valor ?></span>
                 <span class="badge badge-info"><?= $getLibro->nom_categoria ?></span>
                 <h2>Sinopsis</h2>
-                <p><?= $getLibro->descripcion ?></p>
+                <p><?= utf8_encode($getLibro->descripcion) ?></p>
             </div>
         </div>
         <?php

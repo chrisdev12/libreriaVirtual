@@ -48,8 +48,8 @@ $listaAutores = $autor->getAllAutores();
                                 echo "
                                 <tr>
                                     <td>$autor->id_autor</td>
-                                    <td>".utf8_decode($autor->nom_autor)."</td>
-                                     <td>".utf8_decode($autor->apell_autor)."</td>
+                                    <td>".utf8_encode($autor->nom_autor)."</td>
+                                     <td>".utf8_encode($autor->apell_autor)."</td>
                                     <td>
                                         <a class='btn btn-warning btn-sm m-auto' href='formulario_edit_autor.php?id=$autor->id_autor'>Editar</a>
                                     </td>

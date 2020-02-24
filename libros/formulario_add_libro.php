@@ -49,7 +49,7 @@ $libro_autor = $libro->getAutores();
                             <select class="form-control" id="id_autor" name="id_autor" onkeyup="val_input(1);">
                                 <?php
                                 while ($value = mysqli_fetch_object($libro_autor)) {
-                                    echo "<option value='$value->id_autor'>" . utf8_decode($value->persona) . "</option>";
+                                    echo "<option value='$value->id_autor'>" ." ". utf8_encode($value->persona) . "</option>";
                                 }
                                 ?>
                             </select>
@@ -80,7 +80,7 @@ $libro_autor = $libro->getAutores();
                             <?php
                             while ($value  = mysqli_fetch_object($libro_categoria)) {
                                 var_dump($value->id_categoria);
-                                echo "<option value='$value->id_categoria'>" . utf8_decode($value->nom_categoria) . "</option>";
+                                echo "<option value='$value->id_categoria'>" . utf8_encode($value->nom_categoria) . "</option>";
                             }
                             ?>
                         </select>

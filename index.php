@@ -22,6 +22,7 @@ require_once 'config.php';
     <link rel="stylesheet" type="text/css" href="styles/styles.css">
     <link rel="stylesheet" type="text/css" href="img/slider/devSlider/engine1/style.css" />
     <link rel="stylesheet" type="text/css" href="styles/index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 </head>
 
 <body>
@@ -56,24 +57,25 @@ require_once 'config.php';
                 <div class='row'>
 
                     <?php
-                    while (($datosLibros = mysqli_fetch_object($listaLibros)) && ($itr < 3)) {
+                    while (($datosLibros = mysqli_fetch_object($listaLibros)) && ($itr < 6)) {
                         $ruta_img_libro = $img_libro->get_ruta_principal_img_libro($datosLibros->id_libro);
                         while ($ruta = mysqli_fetch_object($ruta_img_libro)) {
                             $ruta_completa = 'http://localhost/libreriaVirtual/' . $ruta->ruta;
-                            if (file_exists(substr($ruta->ruta, 7))) {
-                                $ruta_completa_v = $ruta_completa;
+                            
+                            if (file_exists($ruta->ruta)) {
+                                $ruta_completa_v = utf8_encode($ruta_completa);
                             } else {
                                 $ruta_completa_v = 'http://localhost/libreriaVirtual/libros/img_libros/404/404.png';
                             }
                             // $img = $libro->getLibroImg($datosLibros->id_libro)[0];
-                            $descripcion = subStr($datosLibros->descripcion, 0, 120);
+                            $descripcion = subStr(utf8_encode($datosLibros->descripcion), 0, 120);
                             $descripcion .= ' ...';
                             echo "
-                            <div class='col-sm'>
-                                <div class='card main-books'>
-                                    <img src='$ruta_completa_v' class='card-img-top' alt='...'>
+                            <div class='col-4 mt-2'>
+                                <div class='card main-books flipInX wow'>
+                                    <img src='$ruta_completa_v' class='card-img-top m-5' alt='...'>
                                     <div class='card-body'>
-                                        <h5 class='card-title'>$datosLibros->nom_libro</h5>
+                                        <h5 class='card-title'>".utf8_encode($datosLibros->nom_libro)."</h5>
                                         <span class='badge badge-success'>$datosLibros->valor</span>
                                         </br>
                                         </br>
@@ -89,18 +91,18 @@ require_once 'config.php';
                 </div>
             </div>
     </main>
-    <section class="container">
+    <section class="container flipInX wow">
         <hr class="my-5">
         <div class="jumbotron">
-            <h4 class="display-4">Echa un vistazo al resto de los libros!</h4>
-            <p class="lead">Haciendo click en el botón de más abajo puedes acceder al resto de nuestra biblioteca. Esperamos te guste y puede que te antojes de algo!</p>
+            <h4 class="display-4 flipInX wow">Echa un vistazo al resto de los libros!</h4>
+            <p class="lead flipInX wow">Haciendo click en el botón de más abajo puedes acceder al resto de nuestra biblioteca. Esperamos te guste y puede que te antojes de algo!</p>
             <p class="lead">
-                <a href="categorias/categorias.php" class="btn btn-primary btn-lg">Ver más</a>
+                <a href="categorias/categorias.php" class="btn btn-primary btn-lg flipInX wow">Ver más</a>
             </p>
         </div>
     </section>
 
-    <div class="container contact">
+    <div class="container contact flipInX wow">
         <!-- <div class="divider"></div> -->
         <hr class="my-5">
         <h2>Contáctanos!</h2>
@@ -118,7 +120,7 @@ require_once 'config.php';
                 <label for="exampleFormControlTextarea1">Comentario</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
     </div>
     <?php
@@ -136,6 +138,10 @@ require_once 'config.php';
     </script>
     <script type="text/javascript" src="img/slider/devSlider/engine1/wowslider.js"></script>
     <script type="text/javascript" src="img/slider/devSlider/engine1/script.js"></script>
+    <script src="js/animaciones_carga/wow.min.js"></script>
+    <script>
+            new WOW().init();
+    </script>
 </body>
 
 </html>

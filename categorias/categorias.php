@@ -11,11 +11,12 @@ $rom = $libro->getCategoria();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../styles/categorias/categorias.css">
+    <link rel="stylesheet" href="../styles/efectos_hover/hover-min.css">
     <title>Categorias Libreria Virtual</title>
 </head>
 
 <body>
-    <!-- HEADER -->
+    <!-- HEADER  hvr-shrink -->
     <nav>
         <?php include('../secciones/navbar.php'); ?>
     </nav>
@@ -25,8 +26,8 @@ $rom = $libro->getCategoria();
             <?php
             while ($value  = mysqli_fetch_object($rom)) {
                 echo "<div class='contenedor-una-categoria'>
-                        <div class='card'>
-                        <a href='orderBy.php?id=$value->id_categoria' class='ancla'><h2>$value->nom_categoria</h2><a>
+                        <div class='card hvr-shrink'>
+                        <a href='orderBy.php?id=$value->id_categoria' class='ancla'><h2>".utf8_encode($value->nom_categoria)."</h2><a>
                         </div>
                     </div>";
             }

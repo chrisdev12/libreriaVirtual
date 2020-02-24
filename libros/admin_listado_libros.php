@@ -61,7 +61,7 @@ $img_libro = new Imagen_libro();
                             while ($ruta = mysqli_fetch_object($ruta_img_libro)) {
                                 $ruta_completa = 'http://localhost/libreriaVirtual/'.$ruta->ruta;
                                 if(file_exists(substr($ruta->ruta,7))){
-                                    $ruta_completa_v = $ruta_completa;
+                                    $ruta_completa_v = utf8_encode($ruta_completa);
                                 }else{
                                     $ruta_completa_v = 'http://localhost/libreriaVirtual/libros/img_libros/404/404.png';
                                 }
@@ -70,10 +70,10 @@ $img_libro = new Imagen_libro();
                                         <td>$libro->id_libro</td>
                                         <td><img class='imgLibro' src='$ruta_completa_v'></td>
                                         <td>" . utf8_decode($libro->nom_autor) . "</td>
-                                        <td>$libro->nom_libro</td>
+                                        <td>".utf8_encode($libro->nom_libro)."</td>
                                         <td>$libro->valor</td>
                                         <td>$libro->fec_publicacion</td>
-                                        <td>$libro->nom_categoria</td>
+                                        <td>".utf8_encode($libro->nom_categoria)."</td>
                                         <td>
                                             <a class='btn btn-warning btn-sm m-auto' href='formulario_edit_libro.php?id=$libro->id_libro'>Editar</a>
                                             <a class='btn btn-danger btn-sm m-auto' href='eliminar_libro.php?id=$libro->id_libro'>Eliminar</a>

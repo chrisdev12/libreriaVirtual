@@ -34,13 +34,13 @@ $listaLibros = $libro->getLibrosByCategoria($_GET['id']);
         echo "
             <div class='col-sm' id='cat-flex'>
                 <div class='card main-books'>
-                    <img src='$ruta_completa' class='card-img-top' alt='...'>
+                    <img src='".utf8_encode($ruta_completa)."' class='card-img-top' alt='...'>
                     <div class='card-body col-sm-8'>
-                        <h5 class='card-title'>$libros->nom_libro</h5>
-                        <span class='badge badge-success'>$libros->valor</span>
+                        <h5 class='card-title'>".utf8_encode($libros->nom_libro)."</h5>
+                        <span class='badge badge-success'>$ $libros->valor</span>
                         </br>
                         </br>
-                        <p class='card-text'>$descripcion</p>
+                        <p class='card-text'>".utf8_encode($descripcion)."</p>
                         <a href='../libros/libroDetail.php?id=$libros->id_libro' class='btn btn-primary'>Ver más</a>
                     </div>
                 </div>

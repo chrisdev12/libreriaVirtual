@@ -127,7 +127,7 @@ class Libro
     }
     
     function getAutores(){
-        $sql = "SELECT id_autor, CONCAT(nom_autor,apell_autor) as persona FROM tb_autores";
+        $sql = "SELECT id_autor, CONCAT(nom_autor,' ',apell_autor) as persona FROM tb_autores";
         return mysqli_query($this->conn, $sql);
     }
 }

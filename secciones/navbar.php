@@ -4,7 +4,7 @@
 <div class="conteiner">
     <nav class="navbar fixed-top  navbar-expand-lg navbar-dark bg-dark barraNav">
         <a class="navbar-brand mr-4" href="http://localhost/libreriaVirtual/session.php">
-            <img src="http://localhost/libreriaVirtual/img/icon.png" width="30" height="30" alt="">&nbsp;LibreriaVirtual
+            <img src="http://localhost/libreriaVirtual/img/icon.png" width="30" height="30" alt="">&nbsp;BictiaLibrary
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
