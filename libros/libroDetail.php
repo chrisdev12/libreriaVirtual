@@ -2,9 +2,13 @@
 session_start();
 include_once('../includes/class/Libro.php');
 include_once('../includes/class/Comentario.php');
+include('../includes/class/class_img_libro.php');
+include_once('../includes/class/class_bd.php');
 
+$database = new Database();
 $libro = new Libro();
 $comentario = new Comentario();
+$img_libro = new Imagen_libro();
 if (isset($_POST) && !empty($_POST)) {
     $comentario->guardarComentario($_GET['id'], $_POST);
 }
@@ -29,7 +33,23 @@ if ($_GET['id']) {
     <div class="container mt-3">
         <div class="row">
             <div class="col-md-4">
-                <img class="img-fluid" src="libros/img/<?= $getLibro->nom_archivo_servidor ?>" alt="Imagen del libro">
+                <?php
+                    $img_libro = "SELECT ruta FROM tb_img_libro where id_libro = ".$_GET['id'] ." and principal = true";
+                    $ruta = mysqli_query($database->conectar(),$img_libro);
+                    mysqli_close($database->conectar());
+                    while($ruta_completa = mysqli_fetch_array($ruta)){
+                        
+                        $ruta_v = substr($ruta_completa['ruta'],7);
+                        if(file_exists($ruta_v)){
+                            $ruta_v = $ruta_v;
+                        } else {
+                            $ruta_v = "http://localhost/libreriaVirtual/libros/img_libros/404/404.png";
+                        }
+                    }
+                    echo "<img class='img-fluid' src='$ruta_v' alt='Imagen del libro'>";
+                    
+                ?>
+                
             </div>
             <div class="col-md-8">
                 <h2><?= $getLibro->nom_libro ?></h2>
