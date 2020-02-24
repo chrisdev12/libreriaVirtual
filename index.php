@@ -33,18 +33,18 @@ require_once 'config.php';
     <div id="wowslider-container1">
         <div class="ws_images">
             <ul>
-                <li><img src="img/slider/devSlider/data1/images/1.jpg" alt="" title="" id="wows1_0" /></li>
-                <li><img src="img/slider/devSlider/data1/images/2.jpg" alt="" title="" id="wows1_1" /></li>
-                <li><img src="img/slider/devSlider/data1/images/3.jpg" alt="" title="" id="wows1_2" /></li>
-                <li><img src="img/slider/devSlider/data1/images/4.png" alt="" title="" id="wows1_3" /></li>
+                <li><img src="img/slider/devSlider/data1/images/slider1.jpg" alt="" title="" id="wows1_0" /></li>
+                <li><img src="img/slider/devSlider/data1/images/slider2.jpg" alt="" title="" id="wows1_1" /></li>
+                <li><img src="img/slider/devSlider/data1/images/slider3.jpg" alt="" title="" id="wows1_2" /></li>
+                <li><img src="img/slider/devSlider/data1/images/slider4.jpg" alt="" title="" id="wows1_3" /></li>
             </ul>
         </div>
         <div class="ws_bullets">
             <div>
-                <a href="#" title=""><span><img src="img/slider/devSlider/data1/tooltips/1.jpg" alt="" />1</span></a>
-                <a href="#" title=""><span><img src="img/slider/devSlider/data1/tooltips/2.jpg" alt="" />2</span></a>
-                <a href="#" title=""><span><img src="img/slider/devSlider/data1/tooltips/3.jpg" alt="" />3</span></a>
-                <a href="#" title=""><span><img src="img/slider/devSlider/data1/tooltips/4.png" alt="" />4</span></a>
+                <a href="#" title=""><span><img src="img/slider/devSlider/data1/tooltips/slider1.jpg" alt="" />1</span></a>
+                <a href="#" title=""><span><img src="img/slider/devSlider/data1/tooltips/slider2.jpg" alt="" />2</span></a>
+                <a href="#" title=""><span><img src="img/slider/devSlider/data1/tooltips/slider3.jpg" alt="" />3</span></a>
+                <a href="#" title=""><span><img src="img/slider/devSlider/data1/tooltips/slider4.jpg" alt="" />4</span></a>
             </div>
         </div>
         <div class="ws_shadow"></div>
